@@ -47,4 +47,16 @@ describe('JwtAdapter', () =>{
       await expect(promise).rejects.toThrow();
     })
   });
+
+  describe('decrypt()', () =>{
+    test('Shoud call veirify with correct values', async () =>{
+      const sut = makeSut();
+
+      const verifySpy = jest.spyOn(jwt, 'verify');
+
+      await sut.decrypt('any_token');
+
+      expect(verifySpy).toHaveBeenCalledWith('any_token', 'secret');
+    })
+  })
 })
