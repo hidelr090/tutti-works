@@ -1,2 +1,2 @@
 export * from './add';
-export * from './find-by-identifier-code';
+export * from './check-by-identifier-code';
