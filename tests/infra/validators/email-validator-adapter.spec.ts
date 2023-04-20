@@ -1,4 +1,4 @@
-import { EmailValidatorAdapter } from "./email-validator-adapter";
+import { EmailValidatorAdapter } from "@/infra/validators";
 
 import validator from "validator";
 
@@ -22,7 +22,15 @@ describe('EmailValidatorAdapter', () => {
     const isValid = sut.isValid('invalid_email');
 
     expect(isValid).toBeFalsy();
-    
+
+  });
+
+  test('Should return true if validator returns true', () => {
+    const sut = makeSut();
+
+    const isValid = sut.isValid('valid_email');
+
+    expect(isValid).toBeTruthy();
   });
 
 });
