@@ -60,6 +60,13 @@ describe ('BcryptAdapter', () => {
 
       expect(compareSpy).toHaveBeenCalledWith('any_value', 'any_hash');
     });
+  
+    test('Should return true when comparison is successful', async ()=> {
+      const sut = makeSut();
+      
+      const isValid = await sut.compare('any_value', 'any_hash');
 
+      expect(isValid).toBeTruthy();
+    });
   });
 })
