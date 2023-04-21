@@ -88,6 +88,17 @@ describe('DbAddUser Usecase', () =>{
     expect(isValid).toBeFalsy();
   });
 
-  
+  test('Should return false if CheckUserByIdentifierCode is false', async () => {
+    const { sut, checkUserByIdentifierCodeRepositorySpy } = makeSut();
+
+    jest.spyOn(checkUserByIdentifierCodeRepositorySpy, 'findByIdentifierCode').mockResolvedValueOnce(false);
+
+    const isValid = await sut.add(mockAddUserParams());
+
+    expect(isValid).toBeFalsy();
+  });
+
 });
+
+
 
