@@ -78,6 +78,16 @@ describe('DbAddUser Usecase', () =>{
     expect(isValid).toBeTruthy();
   });
 
+  test('Should return false if AddUserRepository returns false', async () => {
+    const { sut, addUserRepositorySpy } = makeSut();
+
+    jest.spyOn(addUserRepositorySpy, 'add').mockResolvedValueOnce(false);
+
+    const isValid = await sut.add(mockAddUserParams());
+
+    expect(isValid).toBeFalsy();
+  });
+
   
 });
 
