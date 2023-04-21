@@ -14,7 +14,7 @@ export class DbAddUser implements AddUser{
 
   async add (userData: AddUser.Params): Promise<AddUser.Result> {
     
-    const exists = await this.checkUserByIdentifierCodeRepository.findByIdentifierCode(userData.email);
+    const exists = await this.checkUserByIdentifierCodeRepository.findByIdentifierCode(userData.identifierCode);
     
     let isValid = false;
     
