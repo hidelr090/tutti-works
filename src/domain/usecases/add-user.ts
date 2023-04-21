@@ -7,7 +7,7 @@ export namespace AddUser {
     name: string;
     email: string;
     password: string;
-    taxId: string;
+    identifierCode: string;
     phone: string;
   }
 
