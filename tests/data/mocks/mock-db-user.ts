@@ -1,4 +1,4 @@
-import { AddUserRepository, CheckUserByIdentifierCodeRepository } from '@/data/protocols';
+import { AddUserRepository, CheckUserByEmailRepository, CheckUserByIdentifierCodeRepository } from '@/data/protocols';
 import { AddUser } from '@/domain/usecases';
 
 import Chance from 'chance';
@@ -24,6 +24,16 @@ export class CheckUserByIdentifierCodeRepositorySpy implements CheckUserByIdenti
     return this.result;
   }
 }
+
+export class CheckUserByEmailRepositorySpy implements CheckUserByEmailRepository {
+    email = chance.email();
+    result = false;
+
+    async findByEmail (email: string): Promise<boolean> {
+      this.email = email;
+      return this.result;
+    }
+  }
 
 
 
