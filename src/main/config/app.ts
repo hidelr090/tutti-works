@@ -1,5 +1,6 @@
 import express from 'express';
 import { router } from './routes';
+import "reflect-metadata";
 
 import { setupMiddlewares } from './middlewares';
 
