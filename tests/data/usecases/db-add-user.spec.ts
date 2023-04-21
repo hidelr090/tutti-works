@@ -68,7 +68,15 @@ describe('DbAddUser Usecase', () =>{
 
     await expect(promise).rejects.toThrow();
 
-  })
+  });
+
+  test('Should rreturn true on success',async  () => {
+    const { sut } = makeSut();
+    
+    const isValid = await sut.add(mockAddUserParams());
+
+    expect(isValid).toBeTruthy();
+  });
 
   
 });
