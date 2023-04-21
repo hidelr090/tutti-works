@@ -43,6 +43,22 @@ describe('DbAddUser Usecase', () =>{
     expect(promise).rejects.toThrow();
   });
 
+  test('Should call AddUserRepository with correct values', async () =>{
+    const { sut, addUserRepositorySpy, hasherSpy } = makeSut();
+
+    const addUserParams = mockAddUserParams();
+
+    await sut.add(addUserParams);
+
+    expect(addUserRepositorySpy.params).toEqual({
+      name: addUserParams.name,
+      email: addUserParams.email,
+      password: hasherSpy.digest,
+      identifierCode: addUserParams.identifierCode,
+      phone: addUserParams.phone,
+    })
+  });
+
   
 });
 
