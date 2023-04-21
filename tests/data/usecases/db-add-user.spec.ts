@@ -122,6 +122,16 @@ describe('DbAddUser Usecase', () =>{
     expect(isValid).toBeFalsy();
   });
 
+  test('Should call CheckUserByIdentifierCode with correct parameters', async () => {
+    const { sut, checkUserByEmailRepositorySpy}  = makeSut();
+
+    const addUserParams = mockAddUserParams();
+
+    await sut.add(addUserParams);
+
+    expect(checkUserByEmailRepositorySpy.email).toBe(addUserParams.email);
+
+  });
   
 });
 
