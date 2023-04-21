@@ -6,10 +6,11 @@ const chance = new Chance();
 
 export class HasherSpy implements Hasher {
   plaintext = '';
+  digest = chance.hash();
   
   async hash(plaintext: string): Promise<string> {
     this.plaintext = plaintext;
-    return 'hashed_password';
+    return this.digest;
   }
 }
 
