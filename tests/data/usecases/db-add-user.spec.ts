@@ -33,5 +33,16 @@ describe('DbAddUser Usecase', () =>{
     expect(hasherSpy.plaintext).toBe(addUserParams.password);
   });
 
+  test('Should throw if Hasher throws', async () =>{
+    const { sut, hasherSpy } = makeSut();
+
+    jest.spyOn(hasherSpy, 'hash').mockImplementationOnce(throwError);
+
+    const promise = sut.add(mockAddUserParams());
+
+    expect(promise).rejects.toThrow();
+  });
+
+  
 });
 
