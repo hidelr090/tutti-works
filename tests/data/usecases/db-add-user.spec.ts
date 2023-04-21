@@ -1,24 +1,27 @@
 import { DbAddUser } from "@/data/usecases";
 import { mockAddUserParams, throwError } from "@/tests/domain/mocks";
-import { HasherSpy, AddUserRepositorySpy, CheckUserByIdentifierCodeRepositorySpy } from '@/tests/data/mocks';
+import { HasherSpy, AddUserRepositorySpy, CheckUserByIdentifierCodeRepositorySpy, CheckUserByEmailRepositorySpy } from '@/tests/data/mocks';
 
 type SutTypes = {
   sut: DbAddUser;
   hasherSpy: HasherSpy;
   addUserRepositorySpy: AddUserRepositorySpy;
   checkUserByIdentifierCodeRepositorySpy: CheckUserByIdentifierCodeRepositorySpy;
+  checkUserByEmailRepositorySpy: CheckUserByEmailRepositorySpy;
 }
 
 const makeSut = (): SutTypes => {
   const checkUserByIdentifierCodeRepositorySpy = new CheckUserByIdentifierCodeRepositorySpy();
   const hasherSpy = new HasherSpy();
   const addUserRepositorySpy = new AddUserRepositorySpy();
-  const sut = new DbAddUser(hasherSpy, addUserRepositorySpy, checkUserByIdentifierCodeRepositorySpy);
+  const checkUserByEmailRepositorySpy = new CheckUserByEmailRepositorySpy();
+  const sut = new DbAddUser(hasherSpy, addUserRepositorySpy, checkUserByIdentifierCodeRepositorySpy, checkUserByEmailRepositorySpy);
   return {
     sut,
     hasherSpy,
     addUserRepositorySpy,
-    checkUserByIdentifierCodeRepositorySpy
+    checkUserByIdentifierCodeRepositorySpy,
+    checkUserByEmailRepositorySpy
   }
 };
 
@@ -109,6 +112,16 @@ describe('DbAddUser Usecase', () =>{
 
   });
   
+  test('Should return false if checkUserByEmail is false', async () => {
+    const { sut, checkUserByEmailRepositorySpy } = makeSut();
+
+    jest.spyOn(checkUserByEmailRepositorySpy, 'findByEmail').mockResolvedValueOnce(true);
+
+    const isValid = await sut.add(mockAddUserParams());
+
+    expect(isValid).toBeFalsy();
+  });
+
   
 });
 
