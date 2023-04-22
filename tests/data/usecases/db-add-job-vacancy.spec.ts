@@ -36,5 +36,15 @@ describe('DbAddAccount Usecase', () => {
 
   });
 
+  test('Should throw if addJobVacancyRepository throws', async () => {
+    const { sut, addJobVacancyRepositorySpy } = makeSut();
+
+    jest.spyOn(addJobVacancyRepositorySpy, 'add').mockImplementationOnce(throwError);
+
+    const promise = sut.add(mockAddJobVacancyParams());
+
+    await expect(promise).rejects.toThrow();
+    
+  });
   
 });
