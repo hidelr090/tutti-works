@@ -44,7 +44,15 @@ describe('DbAddAccount Usecase', () => {
     const promise = sut.add(mockAddJobVacancyParams());
 
     await expect(promise).rejects.toThrow();
-    
+
+  });
+  
+  test('Should return true on success', async () => {
+    const { sut } = makeSut();
+
+    const isValid = await sut.add(mockAddJobVacancyParams());
+
+    expect(isValid).toBeTruthy();
   });
   
 });
