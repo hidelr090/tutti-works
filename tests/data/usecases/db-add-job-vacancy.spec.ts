@@ -31,7 +31,8 @@ describe('DbAddAccount Usecase', () => {
       title: addJobVacancyParams.title,
       announcerId: addJobVacancyParams.announcerId,
       salary: addJobVacancyParams.salary,
-      company: addJobVacancyParams.company
+      company: addJobVacancyParams.company,
+      socialGroupsIds: addJobVacancyParams.socialGroupsIds
     });
 
   });

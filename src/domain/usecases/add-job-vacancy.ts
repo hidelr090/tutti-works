@@ -9,6 +9,7 @@ export namespace AddJobVacancy{
     title: string;
     company: string;
     salary: number;
+    socialGroupsIds: string[];
   }
 
   export type Result = boolean;
