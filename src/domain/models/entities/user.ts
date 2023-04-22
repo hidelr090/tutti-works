@@ -32,5 +32,5 @@ export class UserEntity extends BaseEntity implements User{
 
   @Column()
   public role?: number;
- 
+
 }
