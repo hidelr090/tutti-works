@@ -1,5 +1,6 @@
-import { AddUserRepository, CheckUserByEmailRepository, CheckUserByIdentifierCodeRepository } from '@/data/protocols';
+import { AddUserRepository, CheckUserByEmailRepository, CheckUserByIdentifierCodeRepository, LoadUserByIdRepository, UpdateUserRepository } from '@/data/protocols';
 import { AddUser } from '@/domain/usecases';
+import { mockUpdateUserParams } from '@/tests/domain/mocks';
 
 import Chance from 'chance';
 
@@ -33,7 +34,28 @@ export class CheckUserByEmailRepositorySpy implements CheckUserByEmailRepository
       this.email = email;
       return this.result;
     }
+}
+
+export class UpdateUserRepositorySpy implements UpdateUserRepository {
+  result: UpdateUserRepository.Result = mockUpdateUserParams();
+  data: UpdateUserRepository.Params = mockUpdateUserParams();
+  async update (userId: string, data: UpdateUserRepository.Params): Promise<UpdateUserRepository.Result> {
+    this.data = data;
+    return {...data, phone: this.result.phone};
   }
+}
+
+export class LoadUserByIdRepositorySpy implements LoadUserByIdRepository {
+  result: UpdateUserRepository.Result = mockUpdateUserParams();
+  data: UpdateUserRepository.Params = mockUpdateUserParams();
+
+  async loadById (id: string): Promise<LoadUserByIdRepository.Result> {
+    this.result = {...this.data, id };
+
+    return this.result
+  }
+}
+
 
 
 
