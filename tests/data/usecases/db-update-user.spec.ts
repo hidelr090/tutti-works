@@ -46,6 +46,17 @@ describe('DbUpdateUser', () => {
 
     await expect(promise).rejects.toThrow();
   });
+
+  test('Should return true on success',async () => {
+    const { sut } = makeSut();
+    
+    const updateUserParams = mockUpdateUserParams();
+
+    const isSuccessful = sut.update(updateUserParams.id as string, updateUserParams);
+
+    expect(isSuccessful).toBeTruthy();
+  });
+  
 });
 
 
