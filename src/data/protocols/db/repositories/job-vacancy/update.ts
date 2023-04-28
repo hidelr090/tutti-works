@@ -1,7 +1,7 @@
 import { UpdateJobVacancy } from "@/domain/usecases";
 
 export interface UpdateJobVacancyRepository {
-  add: (jobVacancyData: UpdateJobVacancyRepository.Params) => Promise<UpdateJobVacancyRepository.Result>;
+  update: (jobVacancyId: string, jobVacancyData: UpdateJobVacancyRepository.Params) => Promise<UpdateJobVacancyRepository.Result>;
 }
 
 export namespace UpdateJobVacancyRepository {

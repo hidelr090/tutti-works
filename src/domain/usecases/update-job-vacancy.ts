@@ -1,5 +1,5 @@
 export interface UpdateJobVacancy {
-  add: (jobVacancy: UpdateJobVacancy.Params) => Promise<UpdateJobVacancy.Result>;
+  update: (vacancyId: string,jobVacancy: UpdateJobVacancy.Params) => Promise<UpdateJobVacancy.Result>;
 }
 
 export namespace UpdateJobVacancy{
