@@ -14,5 +14,5 @@ export namespace LoadUserByIdRepository {
     linkedIn?: string;
     github?: string;
     instagram?: string;
-  };
+  } | null;
 }

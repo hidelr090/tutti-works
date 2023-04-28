@@ -67,6 +67,19 @@ describe('DbUpdateUser', () => {
     expect(typeof loadUserByIdRepositorySpy.result).toEqual(typeof updateUserParams);
   });
 
+  test('Should return false if user is not found', async () =>{
+    const { sut, loadUserByIdRepositorySpy } = makeSut();
+
+    jest.spyOn(loadUserByIdRepositorySpy, 'loadById').mockImplementationOnce(async () => null);
+    
+    const updateUserParams = mockUpdateUserParams();
+
+    const updated = await sut.update(updateUserParams.id as string, updateUserParams);
+
+    expect(updated).toBeFalsy();
+  
+  });
+
   
 });
 
