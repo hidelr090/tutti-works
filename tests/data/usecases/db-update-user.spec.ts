@@ -1,6 +1,6 @@
 import { DbUpdateUser } from "@/data/usecases";
 import { UpdateUserRepositorySpy, LoadUserByIdRepositorySpy } from '@/tests/data/mocks';
-import { mockUpdateUserParams } from "@/tests/domain/mocks";
+import { mockUpdateUserParams, throwError } from "@/tests/domain/mocks";
 
 type SutTypes = {
   sut: DbUpdateUser,
@@ -33,6 +33,18 @@ describe('DbUpdateUser', () => {
     await sut.update(updateUserParams.id as string, updateUserParams);
 
     expect(updateUserRepositorySpy.data).toEqual(updateUserParams);
+  });
+
+  test('Should throw if UpdateUserRepository throws', async () => {
+    const { sut, updateUserRepositorySpy } = makeSut();
+
+    jest.spyOn(updateUserRepositorySpy, 'update').mockImplementationOnce(throwError);
+    
+    const updateUserParams = mockUpdateUserParams();
+
+    const promise = sut.update(updateUserParams.id as string, updateUserParams);
+
+    await expect(promise).rejects.toThrow();
   });
 });
 
