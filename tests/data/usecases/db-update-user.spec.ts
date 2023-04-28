@@ -56,6 +56,17 @@ describe('DbUpdateUser', () => {
 
     expect(isSuccessful).toBeTruthy();
   });
+
+  test('Should LoadUserById return a user', async () => {
+    const { sut, loadUserByIdRepositorySpy } = makeSut();
+
+    const updateUserParams = mockUpdateUserParams();
+
+    await sut.update(updateUserParams.id as string, updateUserParams);
+
+    expect(typeof loadUserByIdRepositorySpy.result).toEqual(typeof updateUserParams);
+  });
+
   
 });
 
