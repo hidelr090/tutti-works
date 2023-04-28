@@ -80,8 +80,19 @@ describe('DbUpdateUser', () => {
   
   });
 
+  test('Should throw if loadUserByIdRepository throws', async () => {
+    const {sut, loadUserByIdRepositorySpy} = makeSut();
+    
+    jest.spyOn(loadUserByIdRepositorySpy, 'loadById').mockImplementationOnce(throwError);
   
-});
+    const updateUserParams = mockUpdateUserParams();
+
+    const promise = sut.update(updateUserParams.id as string, updateUserParams);
+
+    await expect(promise).rejects.toThrow();
+  });
+  
+}); 
 
 
 
