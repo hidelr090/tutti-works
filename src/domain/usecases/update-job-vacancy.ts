@@ -1,0 +1,17 @@
+export interface UpdateJobVacancy {
+  add: (jobVacancy: UpdateJobVacancy.Params) => Promise<UpdateJobVacancy.Result>;
+}
+
+export namespace UpdateJobVacancy{
+  export type Params = {
+    description: string;
+    announcerId: string;
+    title: string;
+    company: string;
+    salary: number;
+    socialGroupsIds: string[];
+    deletedAt: Date;
+  }
+
+  export type Result = boolean;
+}
