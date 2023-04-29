@@ -68,7 +68,21 @@ describe('DbUpdateJobVacancy', () => {
     const jobVacancy = await loadJobVacancyByIdRepositorySpy.loadById(updateJobVacancyParams.id);
 
     expect(typeof jobVacancy).toEqual(typeof updateJobVacancyParams);
-    expect(jobVacancy.id).toBe(updateJobVacancyParams.id);
+    expect(jobVacancy?.id).toBe(updateJobVacancyParams.id);
   });
 
+  test('Should return false if job vacancy is not found', async () =>{
+    const { sut, loadJobVacancyByIdRepositorySpy } = makeSut();
+
+    jest.spyOn(loadJobVacancyByIdRepositorySpy, 'loadById').mockImplementationOnce(async () => null);
+    
+    const updateJobVacancyParams = mockUpdateJobVacancyParams();
+
+    const updated = await sut.update(updateJobVacancyParams.id as string, updateJobVacancyParams);
+
+    expect(updated).toBeFalsy();
+    
+  });
+
+  
 });

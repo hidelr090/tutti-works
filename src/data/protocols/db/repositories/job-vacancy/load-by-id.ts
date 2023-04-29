@@ -11,5 +11,5 @@ export namespace LoadJobVacancyByIdRepository {
     company: string;
     salary: number;
     socialGroupsIds: string[];
-  }
+  } | null;
 }
