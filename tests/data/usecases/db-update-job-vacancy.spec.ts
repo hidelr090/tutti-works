@@ -2,7 +2,6 @@ import { DbUpdateJobVacancy } from "@/data/usecases";
 import { UpdateJobVacancyRepositorySpy, LoadJobVacancyByIdRepositorySpy } from '@/tests/data/mocks';
 import { throwError } from "@/tests/domain/mocks";
 import { mockUpdateJobVacancyParams } from "@/tests/domain/mocks/update-job-vacancy";
-import { escape } from "querystring";
 
 type SutTypes = {
   sut: DbUpdateJobVacancy,
@@ -58,5 +57,18 @@ describe('DbUpdateJobVacancy', () => {
 
     expect(isSuccessful).toBeTruthy();
   });
-  
+
+  test('Should LoadJobVacancyById return a JobVacancy', async () => {
+    const { sut, loadJobVacancyByIdRepositorySpy } = makeSut();
+
+    const updateJobVacancyParams = mockUpdateJobVacancyParams();
+
+    await sut.update(updateJobVacancyParams.id as string, updateJobVacancyParams);
+
+    const jobVacancy = await loadJobVacancyByIdRepositorySpy.loadById(updateJobVacancyParams.id);
+
+    expect(typeof jobVacancy).toEqual(typeof updateJobVacancyParams);
+    expect(jobVacancy.id).toBe(updateJobVacancyParams.id);
+  });
+
 });
