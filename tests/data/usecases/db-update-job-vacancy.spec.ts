@@ -48,4 +48,15 @@ describe('DbUpdateJobVacancy', () => {
 
     await expect(promise).rejects.toThrow();
   });
+
+  test('Should return true on sucess', async () => {
+    const { sut } = makeSut();
+
+    const updateJobVacancyParams = mockUpdateJobVacancyParams();
+
+    const isSuccessful = await sut.update(updateJobVacancyParams.id as string, updateJobVacancyParams);
+
+    expect(isSuccessful).toBeTruthy();
+  });
+  
 });
