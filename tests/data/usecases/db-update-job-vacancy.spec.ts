@@ -84,5 +84,16 @@ describe('DbUpdateJobVacancy', () => {
     
   });
 
+  test('Should throw if loadJobVacancyByIdRepository throws', async () => {
+    const {sut, loadJobVacancyByIdRepositorySpy} = makeSut();
+    
+    jest.spyOn(loadJobVacancyByIdRepositorySpy, 'loadById').mockImplementationOnce(throwError);
+  
+    const updateJobVacancyParams = mockUpdateJobVacancyParams();
+
+    const promise = sut.update(updateJobVacancyParams.id as string, updateJobVacancyParams);
+
+    await expect(promise).rejects.toThrow();
+  });
   
 });
