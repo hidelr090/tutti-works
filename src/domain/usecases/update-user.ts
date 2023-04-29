@@ -14,6 +14,7 @@ export namespace UpdateUser {
     linkedIn?: string;
     github?: string;
     instagram?: string;
+    accessToken?: string;
   };
 
   export type Result = boolean;
