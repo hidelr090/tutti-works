@@ -6,7 +6,7 @@ export namespace LoadJobVacancyByIdRepository {
   export type Result = {
     id: string;
     description: string;
-    announcerId: string;
+    recruiterId: string;
     title: string;
     company: string;
     salary: number;

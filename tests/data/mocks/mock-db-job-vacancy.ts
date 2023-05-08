@@ -27,7 +27,7 @@ const chance = new Chance();
 export class LoadJobVacancyByIdRepositorySpy implements LoadJobVacancyByIdRepository {
   data = {
     description: 'Vaga de Pedreiro',
-    announcerId: chance.guid(),
+    recruiterId: chance.guid(),
     title: 'Pedreiro',
     company: 'Votorantim',
     salary: 56.800,

@@ -5,7 +5,7 @@ const chance = new Chance();
 export const mockUpdateJobVacancyParams = () => ({
   id: chance.guid(),
   description: 'Vaga de Pedreiro',
-  announcerId: chance.guid(),
+  recruiterId: chance.guid(),
   title: 'Pedreiro',
   company: 'Votorantim',
   salary: 56.800,
