@@ -27,4 +27,16 @@ describe('Submit job application usecase', () => {
 
     expect(addCandidateJobVacancyRepositorySpy.params).toEqual(applicationData);
   });
+
+  test('Should throw if AddCandidateJobVacancyRepository throws', async () => {
+    const {sut, addCandidateJobVacancyRepositorySpy} = makeSut();
+
+    jest.spyOn(addCandidateJobVacancyRepositorySpy, 'add').mockImplementationOnce(throwError);
+
+    const promise = sut.submitApplication(mockSubmitApplication());
+
+    await expect(promise).rejects.toThrow();
+  });
+
+  
 });
