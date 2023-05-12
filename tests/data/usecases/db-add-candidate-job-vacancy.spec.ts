@@ -38,5 +38,12 @@ describe('Submit job application usecase', () => {
     await expect(promise).rejects.toThrow();
   });
 
+  test('Should return true on sucess',async () => {
+    const { sut } = makeSut();
+
+    const isValid = await sut.submitApplication(mockSubmitApplication());
+
+    expect(isValid).toBeTruthy();
+  });
   
 });
