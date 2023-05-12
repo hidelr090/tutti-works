@@ -5,7 +5,7 @@ export interface SubmitApplication {
 export namespace SubmitApplication {
   export type Params = {
     id: string,
-    userId: string,
+    candidateId: string,
     jobVacancyId: string,
     resumeUrl: string
   };
