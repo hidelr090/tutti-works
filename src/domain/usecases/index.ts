@@ -6,3 +6,4 @@ export * from './submit-application';
 export * from './show-candidate-profile';
 export * from './add-recruiter';
 export * from './add-candidate';
+export * from './find-job-vacancies';
