@@ -4,13 +4,20 @@ export interface ShowCandidateProfile {
 
 export namespace ShowCandidateProfile {
   export type Result = {
-    name: string;
-    email: string;
-    identifierCode: string;
-    phone: string;
-    avatarUrl: string;
-    description: string;
+    user:{
+      id: string;
+      name: string;
+      email: string;
+      identifierCode: string;
+      phone: string;
+      avatarUrl: string;
+    };
+    candidate: {
+      id: string;
+      description: string;
+    }
     history: {
+      id: string;
       name: string;
       start: Date;
       end: Date;
