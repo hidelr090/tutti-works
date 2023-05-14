@@ -5,3 +5,4 @@ export * from './update-job-vacancy';
 export * from './submit-application';
 export * from './show-candidate-profile';
 export * from './add-recruiter';
+export * from './add-candidate';
