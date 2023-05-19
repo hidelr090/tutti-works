@@ -29,7 +29,7 @@ describe('DbAddAccount Usecase', () => {
     expect(addJobVacancyRepositorySpy.params).toEqual({
       description: addJobVacancyParams.description,
       title: addJobVacancyParams.title,
-      announcerId: addJobVacancyParams.announcerId,
+      recruiterId: addJobVacancyParams.recruiterId,
       salary: addJobVacancyParams.salary,
       company: addJobVacancyParams.company,
       socialGroupsIds: addJobVacancyParams.socialGroupsIds

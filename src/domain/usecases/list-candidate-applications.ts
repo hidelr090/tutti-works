@@ -8,7 +8,7 @@ export namespace ListCandidateApplications {
     resumeUrl: string;
     jobVacancy: {
       description: string;
-      announcerId: string;
+      recruiterId: string;
       title: string;
       company: string;
       salary: number;

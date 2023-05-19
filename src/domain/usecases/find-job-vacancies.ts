@@ -10,7 +10,7 @@ export namespace FindJobVacancies {
 
   export type Result = {
     description: string;
-    announcerId: string;
+    recruiterId: string;
     title: string;
     company: string;
     salary: number;
