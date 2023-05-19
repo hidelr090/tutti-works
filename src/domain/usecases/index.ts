@@ -9,3 +9,4 @@ export * from './add-candidate';
 export * from './find-job-vacancies';
 export * from './list-candidate-applications';
 export * from './list-recruiter-job-vacancies';
+export * from './search-for-candidates';
