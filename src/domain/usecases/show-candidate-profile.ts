@@ -15,6 +15,7 @@ export namespace ShowCandidateProfile {
     candidate: {
       id: string;
       description: string;
+      role: string;
     }
     history: {
       id: string;

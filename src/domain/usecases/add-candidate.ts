@@ -6,6 +6,7 @@ export namespace AddCandidate {
   export type Params = {
     userId: string;
     description: string;
+    role: string;
   }
 
   export type Result = boolean;
