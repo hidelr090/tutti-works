@@ -12,3 +12,4 @@ export * from './list-recruiter-job-vacancies';
 export * from './search-for-candidates';
 export * from './update-candidate';
 export * from './update-recruiter';
+export * from './add-history';
