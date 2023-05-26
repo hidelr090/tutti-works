@@ -1,6 +1,8 @@
 import express from 'express';
 import { router } from './routes';
 import "reflect-metadata";
+import {sequelizeConfig} from '@/infra/db/config/sequelize';
+import { Sequelize } from 'sequelize';
 
 import { setupMiddlewares } from './middlewares';
 
@@ -12,6 +14,7 @@ export class App {
     this.server.use(express.json());
     this.middleware();
     this.router();
+    this.sequelize();
   }
 
   private middleware() {
@@ -20,6 +23,12 @@ export class App {
 
   private router() {
     this.server.use(router);
+  }
+
+  private async sequelize() {
+    const sequelize = new Sequelize(sequelizeConfig);
+    await sequelize.authenticate();
+    await sequelize.sync();
   }
 }
 
