@@ -12,6 +12,10 @@
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended"
   ],
+  "globals": {
+    "__dirname": "readonly",
+    "process": "readonly"
+  },
   "rules": {
     "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
