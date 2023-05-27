@@ -1,7 +1,7 @@
-import { AddUserRepository, CheckUserByEmailRepository, LoadUserByEmailRepository } from "@/data";
+import { AddUserRepository, CheckUserByEmailRepository, LoadUserByEmailRepository, LoadUserByIdRepository } from "@/data";
 import { UserSequelizeModel } from "@/infra/db/sequelize/models";
 
-export class UserSequelizeRepository implements AddUserRepository, LoadUserByEmailRepository, CheckUserByEmailRepository {
+export class UserSequelizeRepository implements AddUserRepository, LoadUserByEmailRepository, CheckUserByEmailRepository, LoadUserByIdRepository{
   async add (data: AddUserRepository.Params): Promise<AddUserRepository.Result> {
     const user = await UserSequelizeModel.create(data);
     return user !== null;
@@ -29,5 +29,10 @@ export class UserSequelizeRepository implements AddUserRepository, LoadUserByEma
     const user = await UserSequelizeModel.findOne({ where: { email } });
 
     return user !== null;
+  }
+
+  async loadById (id: string): Promise<LoadUserByIdRepository.Result>{
+    const user = await UserSequelizeModel.findOne({ where: { id } });
+    return user ? user: null;
   }
 }
