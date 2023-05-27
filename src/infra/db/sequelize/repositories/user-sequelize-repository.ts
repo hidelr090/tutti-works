@@ -1,7 +1,7 @@
-import { AddUserRepository, CheckUserByEmailRepository, LoadUserByEmailRepository, LoadUserByIdRepository, UpdateAccessTokenRepository } from "@/data";
+import { AddUserRepository, CheckUserByEmailRepository, LoadUserByEmailRepository, LoadUserByIdRepository, LoadUserByTokenRepository, UpdateAccessTokenRepository } from "@/data";
 import { UserSequelizeModel } from "@/infra/db/sequelize/models";
 
-export class UserSequelizeRepository implements AddUserRepository, LoadUserByEmailRepository, CheckUserByEmailRepository, LoadUserByIdRepository, UpdateAccessTokenRepository{
+export class UserSequelizeRepository implements AddUserRepository, LoadUserByEmailRepository, CheckUserByEmailRepository, LoadUserByIdRepository, UpdateAccessTokenRepository, LoadUserByTokenRepository{
   async add (data: AddUserRepository.Params): Promise<AddUserRepository.Result> {
     const user = await UserSequelizeModel.create(data);
     return user !== null;
@@ -38,5 +38,10 @@ export class UserSequelizeRepository implements AddUserRepository, LoadUserByEma
 
   async updateAccessToken(id: string, token: string): Promise<void>{
     await UserSequelizeModel.update({ token }, { where: { id } });
+  }
+
+  async loadByToken (token: string): Promise<LoadUserByTokenRepository.Result>{
+    const user = await UserSequelizeModel.findOne({ where: { token } });
+    return user? { id: user.id } : null;
   }
 }

@@ -5,5 +5,5 @@ export interface LoadUserByTokenRepository {
 export namespace LoadUserByTokenRepository {
   export type Result = {
     id: string
-  }
+  } | null;
 }
