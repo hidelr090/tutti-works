@@ -11,5 +11,5 @@ export namespace LoadUserByEmailRepository {
     identifierCode: string;
     phone: string;
     avatarUrl: string;
-  };
+  } | null;
 }

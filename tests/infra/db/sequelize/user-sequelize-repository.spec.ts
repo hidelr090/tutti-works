@@ -36,9 +36,9 @@ describe('UserSequelizeRepository', () => {
       await sut.add(addUserParams);
       const user = await sut.loadByEmail(addUserParams.email);
       expect(user).toBeTruthy();
-      expect(user.id).toBeTruthy();
-      expect(user.name).toBe(addUserParams.name);
-      expect(user.password).toBe(addUserParams.password);
+      expect(user?.id).toBeTruthy();
+      expect(user?.name).toBe(addUserParams.name);
+      expect(user?.password).toBe(addUserParams.password);
     });
   });
 });
