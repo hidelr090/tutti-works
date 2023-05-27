@@ -62,5 +62,19 @@ describe('UserSequelizeRepository', () => {
       const isValid = await sut.findByEmail(mockAddUserParams().email);
       expect(isValid).toBeFalsy();
     });
+  });
+
+  describe('loadById()', () => {
+    test('should return a user if it exists', async () => {
+      const sut = makeSut();
+      const addUserParams = mockAddUserParams();
+      await sut.add(addUserParams);
+      const result = await sut.loadByEmail(addUserParams.email);
+      const user = await sut.loadById(result?.id as string);
+      expect(user).toBeTruthy();
+      expect(user?.id).toBeTruthy();
+      expect(user?.name).toBe(addUserParams.name);
+      expect(user?.password).toBe(addUserParams.password);
+    });
   })
 });
