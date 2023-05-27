@@ -17,15 +17,10 @@ describe('UserSequelizeRepository', () => {
 
   describe('add()', () => {
     test('Should return true on success', async () => {
-      try{
-        const sut = makeSut();
-        const addUserParams = mockAddUserParams();
-        const isValid = await sut.add(addUserParams);
-        expect(isValid).toBe(true);
-      }catch(err){
-        console.error(err);
-        throw err;
-      }
+      const sut = makeSut();
+      const addUserParams = mockAddUserParams();
+      const isValid = await sut.add(addUserParams);
+      expect(isValid).toBe(true);
     });
   });
 });
