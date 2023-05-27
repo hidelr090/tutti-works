@@ -59,7 +59,8 @@ describe('DbAddUser Usecase', () =>{
       password: hasherSpy.digest,
       identifierCode: addUserParams.identifierCode,
       phone: addUserParams.phone,
-      avatarUrl: addUserParams.avatarUrl
+      avatarUrl: addUserParams.avatarUrl,
+      birthDate: addUserParams.birthDate,
     })
   });
 

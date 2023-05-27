@@ -11,6 +11,7 @@ export const mockAddUserParams = (): AddUser.Params => ({
   identifierCode: chance.integer({min: 11, max: 11}).toString(),
   phone: chance.phone(),
   avatarUrl: chance.url().toString(),
+  birthDate: chance.date().toString(),
 });
 
 //export const mockAuthenticationParams = (): Authentication.Params => ({});

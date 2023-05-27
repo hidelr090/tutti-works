@@ -10,6 +10,7 @@ export namespace AddUser {
     identifierCode: string;
     phone: string;
     avatarUrl: string;
+    birthDate: string;
   }
 
   export type Result = boolean;
