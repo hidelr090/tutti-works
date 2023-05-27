@@ -11,7 +11,7 @@ export class UserSequelizeRepository implements AddUserRepository, LoadUserByEma
     const user = await UserSequelizeModel.findOne({ where: { email } });
 
     if(!user){
-      return {} as LoadUserByEmailRepository.Result;
+      throw new Error(`Email ${email} not found`);
     }
 
     return {
