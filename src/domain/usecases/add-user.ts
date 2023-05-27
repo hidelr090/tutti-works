@@ -11,6 +11,7 @@ export namespace AddUser {
     phone: string;
     avatarUrl: string;
     birthDate: string;
+    role: number;
   }
 
   export type Result = boolean;

@@ -61,6 +61,7 @@ describe('DbAddUser Usecase', () =>{
       phone: addUserParams.phone,
       avatarUrl: addUserParams.avatarUrl,
       birthDate: addUserParams.birthDate,
+      role: addUserParams.role
     })
   });
 

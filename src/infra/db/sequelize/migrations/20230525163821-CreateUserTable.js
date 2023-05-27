@@ -55,6 +55,16 @@ module.exports = {
         allowNull: true,
         defaultValue: null,
       },
+      token: {
+        type: Sequelize.STRING,
+        allowNull: true,
+        defaultValue: null,
+      },
+      role: {
+        type: Sequelize.SMALLINT,
+        allowNull: true,
+        defaultValue: null,
+      },
       avatarUrl: {
         type: Sequelize.STRING,
         allowNull: true,

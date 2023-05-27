@@ -12,6 +12,7 @@ export const mockAddUserParams = (): AddUser.Params => ({
   phone: chance.phone(),
   avatarUrl: chance.url().toString(),
   birthDate: chance.date().toString(),
+  role: 1
 });
 
 //export const mockAuthenticationParams = (): Authentication.Params => ({});

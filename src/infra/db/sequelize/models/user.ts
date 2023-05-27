@@ -44,6 +44,16 @@ User.init({
     type: DataTypes.STRING,
     allowNull: true,
     defaultValue: null,
+  },
+  token: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: null,
+  },
+  role: {
+    type: DataTypes.SMALLINT,
+    allowNull: true,
+    defaultValue: null,
   }
 }, {
   sequelize,
