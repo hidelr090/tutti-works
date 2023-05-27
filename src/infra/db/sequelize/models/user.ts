@@ -1,8 +1,19 @@
 import { sequelize } from '@/infra/db/config/sequelize';
 import { BaseModel } from './base';
-import { DataTypes } from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
 
-export const User = sequelize.define('user', {
+class User extends Model {
+  public id!: string;
+  public deletedAt!: Date;
+  public name!: string;
+  public email!: string;
+  public phone!: string;
+  public avatarUrl!: string;
+  public identifierCode!: string;
+  public password!: string;
+}
+
+User.init({
   ...BaseModel,
   email: {
     type: DataTypes.STRING,
@@ -28,7 +39,19 @@ export const User = sequelize.define('user', {
     type: DataTypes.STRING,
     allowNull: true,
     defaultValue: null,
+  },
+  name: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: null,
   }
 }, {
+  sequelize,
   tableName: 'user'
 });
+
+type UserModelStatic = typeof Model & {
+  new (): User;
+};
+
+export const UserSequelizeModel = User as UserModelStatic;
