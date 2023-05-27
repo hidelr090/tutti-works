@@ -47,4 +47,14 @@ describe('UserSequelizeRepository', () => {
       expect(account).toBeFalsy();
     });
   });
+
+  describe('findByEmail()', () => {
+    test('should return true if email is valid', async () => {
+      const sut = makeSut();
+      const addUserParams = mockAddUserParams();
+      await sut.add(addUserParams);
+      const isValid = await sut.findByEmail(addUserParams.email);
+      expect(isValid).toBeTruthy();
+    });
+  })
 });
