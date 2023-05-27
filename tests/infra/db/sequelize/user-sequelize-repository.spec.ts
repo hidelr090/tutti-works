@@ -2,6 +2,9 @@ import { UserSequelizeRepository } from "@/infra/db/sequelize/repositories";
 import { mockAddUserParams } from "@/tests/domain/mocks";
 import { sequelize } from "@/infra/db/config/sequelize";
 import { UserSequelizeModel } from "@/infra/db/sequelize/models";
+import Chance from "chance";
+
+const chance = new Chance();
 
 const makeSut = (): UserSequelizeRepository => {
   return new UserSequelizeRepository();
@@ -82,6 +85,20 @@ describe('UserSequelizeRepository', () => {
       const isValid = await sut.loadById('invalid_id');
       expect(isValid).toBeFalsy();
     });
-    
-  })
+  });
+
+  describe('updateAccessToken', () => {
+    test('should update access token', async () => {
+      const randomAccessToken = chance.string();
+      const sut = makeSut();
+      const addUserParams = mockAddUserParams();
+      await sut.add(addUserParams);
+      const insertedUser = await sut.loadByEmail(addUserParams.email);
+      await sut.updateAccessToken(insertedUser?.id as string, randomAccessToken);
+      const updatedUser = await sut.loadByToken(randomAccessToken);
+      expect(updatedUser).toBeTruthy();
+      expect(updatedUser?.id).toBe(insertedUser?.id);
+    })
+  });
+
 });
