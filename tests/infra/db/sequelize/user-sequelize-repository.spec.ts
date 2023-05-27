@@ -40,5 +40,11 @@ describe('UserSequelizeRepository', () => {
       expect(user?.name).toBe(addUserParams.name);
       expect(user?.password).toBe(addUserParams.password);
     });
+
+    test('should return null if loadByEmail fails', async () => {
+      const sut = makeSut();
+      const account = await sut.loadByEmail(mockAddUserParams().email);
+      expect(account).toBeFalsy();
+    });
   });
 });
