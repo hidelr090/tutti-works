@@ -28,4 +28,13 @@ describe('CandidateSequelizeRepository', () => {
       expect(isValid).toBeTruthy(); 
     });
   });
+
+  describe('checkByUserId()', () => {
+    test('Should return true on success', async () => {
+      const sut = makeSut();
+      const addCandidateParams = mockAddCandidateParams();
+      const exists = await sut.checkByUserId(addCandidateParams.userId);
+      expect(exists).toBeTruthy();
+    });
+  });
 });
