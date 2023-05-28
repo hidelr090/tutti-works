@@ -1,6 +1,7 @@
 import { sequelize } from '@/infra/db/config/sequelize';
 import { BaseModel } from './base';
 import { DataTypes, Model } from 'sequelize';
+import { HistorySequelizeModel } from './history';
 
 class User extends Model {
   public id!: string;
@@ -59,6 +60,8 @@ User.init({
   sequelize,
   tableName: 'user'
 });
+
+User.hasMany(HistorySequelizeModel);
 
 type UserModelStatic = typeof Model & {
   new (): User;
