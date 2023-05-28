@@ -1,7 +1,8 @@
 import { CandidateSequelizeRepository } from '@/infra/db/sequelize/repositories';
-import { mockAddCandidateParams } from '@/tests/domain/mocks';
+import { mockAddCandidateParams, mockAddUserParams } from '@/tests/domain/mocks';
 import { sequelize } from '@/infra/db/config/sequelize';
 import { CandidateSequelizeModel } from '@/infra/db/sequelize/models';
+import { UserSequelizeRepository } from '@/infra/db/sequelize/repositories';
 
 const makeSut = (): CandidateSequelizeRepository => {
   return new CandidateSequelizeRepository();
@@ -32,8 +33,13 @@ describe('CandidateSequelizeRepository', () => {
   describe('checkByUserId()', () => {
     test('Should return true on success', async () => {
       const sut = makeSut();
+      const addUserParams = mockAddUserParams();
+      const userRepository = new UserSequelizeRepository();
+      await userRepository.add(addUserParams);
+      const userFound = await userRepository.loadByEmail(addUserParams.email);
       const addCandidateParams = mockAddCandidateParams();
-      const exists = await sut.checkByUserId(addCandidateParams.userId);
+      await sut.add({...addCandidateParams, userId: userFound?.id as string});
+      const exists = await sut.checkByUserId(userFound?.id as string);
       expect(exists).toBeTruthy();
     });
   });
