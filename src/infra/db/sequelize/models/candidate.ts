@@ -1,13 +1,16 @@
 import { sequelize } from "@/infra/db/config/sequelize";
 import { BaseModel } from "./base";
 import { DataTypes, Model } from 'sequelize';
+import { UserSequelizeModel } from "./user";
 
-class Candidate extends Model {
+export class Candidate extends Model {
   public id!: string;
   public deletedAt!: Date;
   public userId!: string;
   public description!: string;
   public role!: string;
+
+  public static associate: () => void;
 }
 
 Candidate.init({
@@ -30,6 +33,11 @@ Candidate.init({
   sequelize,
   tableName: 'candidate'
 });
+
+Candidate.associate = () => {
+  Candidate.belongsTo(UserSequelizeModel, { foreignKey: 'userId' });
+};
+
 
 type CandidateModelStatic = typeof Model & {
   new (): Candidate;
