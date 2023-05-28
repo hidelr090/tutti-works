@@ -3,7 +3,7 @@ import { BaseModel } from "./base";
 import { DataTypes, Model } from "sequelize";
 import { UserSequelizeModel } from "./user";
 
-class History extends Model {
+export class History extends Model {
   public id!: string;
   public deletedAt!: Date;
   public userId!: string;
@@ -11,6 +11,8 @@ class History extends Model {
   public end!: Date;
   public name!: string;
   public description!: string;
+
+  public static associate: () => void;
 }
 
 History.init({
@@ -44,10 +46,12 @@ History.init({
   tableName: 'history'
 });
 
-History.belongsTo(UserSequelizeModel, { foreignKey: 'userId' });
+History.associate = () => {
+  History.belongsTo(UserSequelizeModel, { foreignKey: 'userId' });
+};
 
 type HistoryModelStatic = typeof Model & {
   new (): History;
-}
+};
 
 export const HistorySequelizeModel = History as HistoryModelStatic;
