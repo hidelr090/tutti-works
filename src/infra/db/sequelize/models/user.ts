@@ -3,7 +3,7 @@ import { BaseModel } from './base';
 import { DataTypes, Model } from 'sequelize';
 import { HistorySequelizeModel } from './history';
 
-class User extends Model {
+export class User extends Model {
   public id!: string;
   public deletedAt!: Date;
   public name!: string;
@@ -12,6 +12,8 @@ class User extends Model {
   public avatarUrl!: string;
   public identifierCode!: string;
   public password!: string;
+
+  public static associate: () => void;
 }
 
 User.init({
@@ -61,7 +63,15 @@ User.init({
   tableName: 'user'
 });
 
-User.hasMany(HistorySequelizeModel);
+User.associate = () => {
+  User.hasMany(HistorySequelizeModel, {
+    foreignKey: 'userId',
+    as: 'histories',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+    constraints: true,
+  });
+};
 
 type UserModelStatic = typeof Model & {
   new (): User;
