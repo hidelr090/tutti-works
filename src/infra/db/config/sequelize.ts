@@ -8,6 +8,7 @@ const sequelizeConfig = {
   password: process.env.DB_PASSWD || 'tutti123',
   database: process.env.DB_DATABASE || 'tutti_dev',
   port: Number(process.env.DB_PORT) || 3306,
+  logging: false,
 }
 
 export const sequelize = new Sequelize(sequelizeConfig);
