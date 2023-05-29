@@ -46,6 +46,16 @@ describe('HistorySequelizeRepository', () => {
       const history = await sut.loadById('invalid_id');
       expect(history).toBeNull();
     });
-    
   });
+
+  describe('update()', () => {
+    test('Should update a history an return true', async ()=> {
+      const sut = makeSut();
+      const addHistoryParams = mockAddHistoryParams();
+      await sut.add(addHistoryParams);
+      const loaded = await HistorySequelizeModel.findOne({where: {userId: addHistoryParams.userId }}) as LoadHistoryByIdRepository.Result;
+      const updated = sut.update(loaded?.id as string, { description: 'updated' });
+      expect(updated).toBeTruthy();
+    });
+  })
 });
