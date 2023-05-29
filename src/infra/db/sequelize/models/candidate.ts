@@ -1,7 +1,7 @@
 import { sequelize } from "@/infra/db/config/sequelize";
 import { BaseModel } from "./base";
 import { DataTypes, Model } from 'sequelize';
-import { UserSequelizeModel } from "./user";
+import { User, UserSequelizeModel } from "./user";
 
 export class Candidate extends Model {
   public id!: string;
@@ -9,6 +9,8 @@ export class Candidate extends Model {
   public userId!: string;
   public description!: string;
   public role!: string;
+
+  public user!: User;
 
   public static associate: () => void;
 }
@@ -35,7 +37,7 @@ Candidate.init({
 });
 
 Candidate.associate = () => {
-  Candidate.belongsTo(UserSequelizeModel, { foreignKey: 'userId' });
+  Candidate.belongsTo(UserSequelizeModel, { foreignKey: 'userId', as: 'user'});
 };
 
 
