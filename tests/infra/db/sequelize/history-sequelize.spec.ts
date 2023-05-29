@@ -41,5 +41,11 @@ describe('HistorySequelizeRepository', () => {
       expect(history).toEqual({...loaded});
     });
 
+    test('Sould return null if no history', async ()=> {
+      const sut = makeSut();
+      const history = await sut.loadById('invalid_id');
+      expect(history).toBeNull();
+    });
+    
   });
 });
