@@ -11,12 +11,12 @@ export namespace ShowCandidateProfile {
       identifierCode: string;
       phone: string;
       avatarUrl: string;
-    };
+    },
     candidate: {
       id: string;
       description: string;
       role: string;
-    }
+    },
     history: {
       id: string;
       name: string;
