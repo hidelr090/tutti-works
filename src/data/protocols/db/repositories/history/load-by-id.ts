@@ -4,6 +4,7 @@ export interface LoadHistoryByIdRepository {
 
 export namespace LoadHistoryByIdRepository {
   export type Result = {
+    id: string;
     name: string;
     start: Date;
     end: Date;
