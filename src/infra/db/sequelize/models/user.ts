@@ -1,7 +1,8 @@
 import { sequelize } from '@/infra/db/config/sequelize';
 import { BaseModel } from './base';
 import { DataTypes, Model } from 'sequelize';
-import { HistorySequelizeModel } from './history';
+import { HistorySequelizeModel, History } from './history';
+import { Candidate, CandidateSequelizeModel } from './candidate';
 
 export class User extends Model {
   public id!: string;
@@ -12,6 +13,9 @@ export class User extends Model {
   public avatarUrl!: string;
   public identifierCode!: string;
   public password!: string;
+
+  public candidate!: Candidate;
+  public histories!: History[]; 
 
   public static associate: () => void;
 }
@@ -67,6 +71,13 @@ User.associate = () => {
   User.hasMany(HistorySequelizeModel, {
     foreignKey: 'userId',
     as: 'histories',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+    constraints: true,
+  });
+  User.hasMany(CandidateSequelizeModel, {
+    foreignKey: 'userId',
+    as: 'candidate',
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
     constraints: true,
