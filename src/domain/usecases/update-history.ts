@@ -4,10 +4,10 @@ export interface UpdateHistory {
 
 export namespace UpdateHistory {
   export type Params = {  
-    name: string;
-    description: string;
-    start: Date;
-    end: Date;
+    name?: string;
+    description?: string;
+    start?: Date;
+    end?: Date;
     deletedAt?: Date;
   }
 
