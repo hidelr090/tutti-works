@@ -1,8 +1,8 @@
-import { AddHistoryRepository, LoadHistoryByIdRepository } from '@/data/protocols/db/repositories';
-import { AddHistory } from '@/domain/usecases';
+import { AddHistoryRepository, LoadHistoryByIdRepository, UpdateHistoryRepository } from '@/data/protocols/db/repositories';
+import { AddHistory, UpdateHistory } from '@/domain/usecases';
 import { HistorySequelizeModel } from '@/infra/db/sequelize/models';
 
-export class HistorySequelizeRepository implements AddHistoryRepository, LoadHistoryByIdRepository{
+export class HistorySequelizeRepository implements AddHistoryRepository, LoadHistoryByIdRepository, UpdateHistoryRepository{
   async add (historyData: AddHistory.Params): Promise<boolean>{
     const history = await HistorySequelizeModel.create(historyData);
     return history !== null;
@@ -12,4 +12,9 @@ export class HistorySequelizeRepository implements AddHistoryRepository, LoadHis
     const history = await HistorySequelizeModel.findOne({where: { id }});
     return history; 
   } 
+
+  async update (historyId: string, historyData: UpdateHistory.Params): Promise<boolean>{
+    const history = await HistorySequelizeModel.update(historyData, {where: { id: historyId }});
+    return history !==null;
+  }
 }
