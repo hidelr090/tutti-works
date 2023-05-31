@@ -6,3 +6,4 @@ export * from './recruiter';
 export * from './recruiter-job-vacancy';
 export * from './history';
 export * from './social-group';
+export * from './candidate-social-group';
