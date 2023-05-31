@@ -1,4 +1,4 @@
-import { ListSocialGroups } from "@/domain/usecases/list-social-groups";
+import { ListSocialGroups } from "@/domain/usecases";
 
 export interface ListSocialGroupsRepository {
   list: () => Promise<ListSocialGroupsRepository.Result>;

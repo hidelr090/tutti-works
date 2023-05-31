@@ -16,3 +16,4 @@ export * from './add-history';
 export * from './update-history';
 export * from './authentication';
 export * from './load-user-by-token';
+export * from './list-social-groups';
