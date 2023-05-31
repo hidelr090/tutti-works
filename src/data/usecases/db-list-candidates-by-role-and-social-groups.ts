@@ -8,7 +8,7 @@ export class DbListCandidates implements SearchForCandidates {
 
   async searchForCandidates (jobInfos: SearchForCandidates.Params): Promise<SearchForCandidates.Result>{
     
-    const result = await this.listCandidatesByRoleAndSocialGroupsRepository.list(jobInfos);
+    const result = await this.listCandidatesByRoleAndSocialGroupsRepository.listByRoleAndSocialGroups(jobInfos);
 
     return result;
   }

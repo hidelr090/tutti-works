@@ -1,7 +1,7 @@
 import { SearchForCandidates } from "@/domain/usecases";
 
 export interface ListCandidatesByRoleAndSocialGroupsRepository {
-  list: (jobInfos: ListCandidatesByRoleAndSocialGroupsRepository.Params) => Promise<ListCandidatesByRoleAndSocialGroupsRepository.Result>;
+  listByRoleAndSocialGroups: (jobInfos: ListCandidatesByRoleAndSocialGroupsRepository.Params) => Promise<ListCandidatesByRoleAndSocialGroupsRepository.Result>;
 }
 
 export namespace ListCandidatesByRoleAndSocialGroupsRepository {
