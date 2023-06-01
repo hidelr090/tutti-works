@@ -143,4 +143,26 @@ describe('CandidateSequelizeRepository', () => {
       expect(listedCandidates).toBeTruthy();
     });
   });
+
+  describe('update()', () => {
+    test('Should return true on successful update', async ()=> {
+      const {sut, userSequelizeRepository } = makeSut();
+
+      const addUserParams = mockAddUserParams();
+
+      const addCandidateParams  = mockAddCandidateParams();
+
+      await userSequelizeRepository.add(addUserParams);
+
+      const userFound = await userSequelizeRepository.loadByEmail(addUserParams.email);
+
+      await sut.add({...addCandidateParams, userId: userFound?.id as string});
+
+      const candidate = await sut.findByUserId(userFound?.id as string);
+
+      const result  = await sut.update(candidate.candidate.id, {...candidate.candidate, role: 'Engenheiro'});
+
+      expect(result).toBeTruthy();
+    });
+  });
 });
