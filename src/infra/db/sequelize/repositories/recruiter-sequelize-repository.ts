@@ -1,5 +1,5 @@
-import { AddRecruiterRepository, FindRecruiterByUserIdRepository, CheckRecruiterByUserIdRepository, UpdateRecruiterRepository, ListJobVacanciesByRecruiterIdRepository} from '@/data/protocols/db/repositories';
-import { AddRecruiter, ListRecruiterJobVacancies, UpdateRecruiter} from '@/domain/usecases';
+import { AddRecruiterRepository, FindRecruiterByUserIdRepository, CheckRecruiterByUserIdRepository, UpdateRecruiterRepository } from '@/data/protocols/db/repositories';
+import { AddRecruiter, UpdateRecruiter} from '@/domain/usecases';
 import { Recruiter, RecruiterSequelizeModel } from '@/infra/db/sequelize/models';
 
 Recruiter.associate();
