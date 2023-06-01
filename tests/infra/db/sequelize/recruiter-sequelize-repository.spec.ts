@@ -1,7 +1,7 @@
 import { RecruiterSequelizeRepository } from '@/infra/db/sequelize/repositories';
 import { mockAddUserParams } from '@/tests/domain/mocks';
 import { sequelize } from '@/infra/db/config/sequelize';
-import { RecruiterSequelizeModel } from '@/infra/db/sequelize/models';
+import { CandidateSequelizeModel, RecruiterSequelizeModel, UserSequelizeModel } from '@/infra/db/sequelize/models';
 import { UserSequelizeRepository } from '@/infra/db/sequelize/repositories';
 
 type SutTypes = {
@@ -30,8 +30,17 @@ describe('RecruiterSequelizeRepository', ()=> {
   });
 
   beforeEach(async () => {
-    return true
-  }); 
+    try {
+      await sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
+      
+      await CandidateSequelizeModel.destroy({truncate: true});
+      await UserSequelizeModel.destroy({ truncate: true });
+  
+      await sequelize.query('SET FOREIGN_KEY_CHECKS = 1');
+    } catch (err) {
+      console.error(err);
+    }
+  });
 
   describe('AddRecruiter()', ()=> {
     test('Should return true on successful insert', async ()=> {

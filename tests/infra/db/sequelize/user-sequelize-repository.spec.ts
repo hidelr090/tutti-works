@@ -20,8 +20,17 @@ describe('UserSequelizeRepository', () => {
   });
 
   beforeEach(async () => {
-    await UserSequelizeModel.destroy({truncate: true});
+    try {
+      await sequelize.query('SET FOREIGN_KEY_CHECKS = 0');
+      
+      await UserSequelizeModel.destroy({ truncate: true });
+  
+      await sequelize.query('SET FOREIGN_KEY_CHECKS = 1');
+    } catch (err) {
+      console.error(err);
+    }
   });
+
 
   describe('add()', () => {
     test('Should return true on success', async () => {
