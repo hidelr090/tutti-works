@@ -4,10 +4,16 @@ import { Recruiter, RecruiterSequelizeModel } from '@/infra/db/sequelize/models'
 
 Recruiter.associate();
 
-export class RecruiterSequelizeRepository implements AddRecruiterRepository {
+export class RecruiterSequelizeRepository implements AddRecruiterRepository, CheckRecruiterByUserIdRepository{
   async add(recruiterData: AddRecruiter.Params): Promise<boolean>{
     const recruiter = await RecruiterSequelizeModel.create(recruiterData);
 
     return recruiter !== null;
+  }
+
+  async checkByUserId (userId: string): Promise<boolean>{
+    const recruiter = await RecruiterSequelizeModel.findOne({where: {userId}});
+
+    return recruiter !==null;
   }
 }
