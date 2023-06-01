@@ -7,5 +7,5 @@ export namespace FindRecruiterByUserIdRepository {
     id: string;
     company: string,
     userId: string,
-  };
+  } | null;
 }
