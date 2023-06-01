@@ -4,7 +4,6 @@ export interface UpdateCandidate {
 
 export namespace UpdateCandidate {
   export type Params = {
-    userId: string;
     description: string;
     role: string;
   };

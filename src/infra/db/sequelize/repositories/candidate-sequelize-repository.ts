@@ -1,13 +1,18 @@
-import { AddCandidateRepository, CheckCandidateByUserIdRepository, FindCandidateByUserIdRepository, ListCandidatesByRoleAndSocialGroupsRepository } from '@/data/protocols/db/repositories';
-import { SearchForCandidates, ShowCandidateProfile } from '@/domain/usecases';
-import { Candidate, CandidateSequelizeModel, User, History, SocialGroup, CandidateSocialGroupSequelizeModel, CandidateSocialGroup } from '@/infra/db/sequelize/models';
+import { AddCandidateRepository, CheckCandidateByUserIdRepository, FindCandidateByUserIdRepository, ListCandidatesByRoleAndSocialGroupsRepository, UpdateCandidateRepository } from '@/data/protocols/db/repositories';
+import { SearchForCandidates, ShowCandidateProfile, UpdateCandidate } from '@/domain/usecases';
+import { Candidate, CandidateSequelizeModel, User, History, SocialGroup } from '@/infra/db/sequelize/models';
 import { Op } from 'sequelize';
 
 Candidate.associate();
 SocialGroup.associate();
 User.associate();
 History.associate();
-export class CandidateSequelizeRepository implements AddCandidateRepository, CheckCandidateByUserIdRepository, FindCandidateByUserIdRepository, ListCandidatesByRoleAndSocialGroupsRepository{
+export class CandidateSequelizeRepository implements 
+  AddCandidateRepository, 
+  CheckCandidateByUserIdRepository, 
+  FindCandidateByUserIdRepository, 
+  ListCandidatesByRoleAndSocialGroupsRepository, 
+  UpdateCandidateRepository{
 
   async add(candidateData: AddCandidateRepository.Params) : Promise<AddCandidateRepository.Result>{
     const candidate = await CandidateSequelizeModel.create(candidateData);
@@ -115,4 +120,14 @@ export class CandidateSequelizeRepository implements AddCandidateRepository, Che
       }))
     }));
   } 
+
+  async update (candidateId: string, candidateData: UpdateCandidate.Params): Promise<boolean>{
+    const result = await CandidateSequelizeModel.update(candidateData, {
+      where: {
+        id: candidateId
+      }
+    });
+
+    return result !== null;
+  }
 }
