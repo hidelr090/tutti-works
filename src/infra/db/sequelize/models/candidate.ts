@@ -2,6 +2,8 @@ import { sequelize } from "@/infra/db/config/sequelize";
 import { BaseModel } from "./base";
 import { DataTypes, Model } from 'sequelize';
 import { User, UserSequelizeModel } from "./user";
+import { SocialGroup, SocialGroupSequelizeModel } from "./social-group";
+import { CandidateSocialGroup } from "./candidate-social-group";
 
 export class Candidate extends Model {
   public id!: string;
@@ -11,6 +13,7 @@ export class Candidate extends Model {
   public role!: string;
 
   public user!: User;
+  public socialGroups!: SocialGroup[];
 
   public static associate: () => void;
 }
@@ -38,6 +41,14 @@ Candidate.init({
 
 Candidate.associate = () => {
   Candidate.belongsTo(UserSequelizeModel, { foreignKey: 'userId', as: 'user'});
+  Candidate.belongsToMany(SocialGroupSequelizeModel, {
+    through: CandidateSocialGroup,
+    foreignKey: {
+      name: 'candidateId',
+      allowNull: false,
+    },
+    as: 'socialGroups'
+  })
 };
 
 
