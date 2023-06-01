@@ -8,7 +8,7 @@ export namespace AddJobVacancy{
     recruiterId: string;
     title: string;
     company: string;
-    salary: number;
+    wage: number;
     socialGroupsIds: string[];
   }
 

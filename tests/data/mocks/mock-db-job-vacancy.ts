@@ -30,7 +30,7 @@ export class LoadJobVacancyByIdRepositorySpy implements LoadJobVacancyByIdReposi
     recruiterId: chance.guid(),
     title: 'Pedreiro',
     company: 'Votorantim',
-    salary: 56.800,
+    wage: 56.800,
     socialGroupsIds: [
       chance.guid(),
       chance.guid(),

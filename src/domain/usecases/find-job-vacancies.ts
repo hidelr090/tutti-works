@@ -13,7 +13,7 @@ export namespace FindJobVacancies {
     recruiterId: string;
     title: string;
     company: string;
-    salary: number;
+    wage: number;
     socialGroups: {
       id: string;
       title: string;

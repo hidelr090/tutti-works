@@ -9,7 +9,7 @@ export namespace LoadJobVacancyByIdRepository {
     recruiterId: string;
     title: string;
     company: string;
-    salary: number;
+    wage: number;
     socialGroupsIds: string[];
   } | null;
 }

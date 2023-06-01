@@ -9,6 +9,6 @@ export const mockAddJobVacancyParams = (): AddJobVacancy.Params => ({
   recruiterId: chance.guid(),
   title: 'Auxiliar Administrativo',
   company: 'Vara Criminal',
-  salary: 3800.00,
+  wage: 3800.00,
   socialGroupsIds: [ 'Pardos', 'Pretos' ],
 });

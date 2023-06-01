@@ -11,7 +11,7 @@ export namespace ListCandidateApplications {
       recruiterId: string;
       title: string;
       company: string;
-      salary: number;
+      wage: number;
       socialGroups: {
         id: string;
         title: string;

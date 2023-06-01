@@ -30,7 +30,7 @@ describe('DbAddAccount Usecase', () => {
       description: addJobVacancyParams.description,
       title: addJobVacancyParams.title,
       recruiterId: addJobVacancyParams.recruiterId,
-      salary: addJobVacancyParams.salary,
+      wage: addJobVacancyParams.wage,
       company: addJobVacancyParams.company,
       socialGroupsIds: addJobVacancyParams.socialGroupsIds
     });
