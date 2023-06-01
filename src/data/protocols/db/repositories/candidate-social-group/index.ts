@@ -1,2 +1,2 @@
 export * from './add';
-export * from './check-existing';
+export * from '../social-group/find-by-candidate-id';
