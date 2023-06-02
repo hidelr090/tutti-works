@@ -1,9 +1,9 @@
-import { AddJobVacancyRepository, FindJobVacanciesRepository, LoadJobVacancyByIdRepository, UpdateJobVacancyRepository} from "@/data";
+import { AddJobVacancyRepository, FindJobVacanciesRepository, LoadJobVacancyByIdRepository, UpdateJobVacancyRepository } from "@/data";
 import { JobVacancy, JobVacancySequelizeModel, SocialGroup } from "@/infra/db/sequelize/models";
 import { Op } from "sequelize";
 
 JobVacancy.associate();
-export class JobVacancySequelizeRepository implements AddJobVacancyRepository, FindJobVacanciesRepository, LoadJobVacancyByIdRepository{
+export class JobVacancySequelizeRepository implements AddJobVacancyRepository, FindJobVacanciesRepository, LoadJobVacancyByIdRepository, UpdateJobVacancyRepository{
   async add(jobVacancyData: AddJobVacancyRepository.Params): Promise<boolean>{
 
     const jobVacancy = await JobVacancySequelizeModel.create(jobVacancyData);
@@ -80,5 +80,11 @@ export class JobVacancySequelizeRepository implements AddJobVacancyRepository, F
     }
 
     return result;
+  }
+
+  async update (jobVacancyId: string, jobVacancyData: UpdateJobVacancyRepository.Params): Promise<boolean>{
+    const updated = await JobVacancySequelizeModel.update(jobVacancyData, { where: { id: jobVacancyId }});
+
+    return updated !== null;
   }
 }
