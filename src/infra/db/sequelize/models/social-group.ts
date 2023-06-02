@@ -4,6 +4,7 @@ import { DataTypes, Model } from 'sequelize';
 import { Candidate, CandidateSequelizeModel } from "./candidate";
 import { CandidateSocialGroup } from "./candidate-social-group";
 import { JobVacancySocialGroup } from "./job-vacancy-social-group";
+import { JobVacancySequelizeModel } from "./job-vacancy";
 
 export class SocialGroup extends Model {
   public id!: string;
@@ -43,7 +44,7 @@ SocialGroup.associate = () => {
     otherKey: 'candidateId',
     as: 'candidates'
   });
-  SocialGroup.belongsToMany(CandidateSequelizeModel, { 
+  SocialGroup.belongsToMany(JobVacancySequelizeModel, { 
     through: JobVacancySocialGroup,
     foreignKey: {
       name: 'socialGroupId',
