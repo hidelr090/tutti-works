@@ -3,7 +3,7 @@ import { JobVacancy, JobVacancySequelizeModel, SocialGroup } from "@/infra/db/se
 import { Op } from "sequelize";
 
 JobVacancy.associate();
-export class JobVacancySequelizeRepository implements AddJobVacancyRepository, FindJobVacanciesRepository{
+export class JobVacancySequelizeRepository implements AddJobVacancyRepository, FindJobVacanciesRepository, LoadJobVacancyByIdRepository{
   async add(jobVacancyData: AddJobVacancyRepository.Params): Promise<boolean>{
 
     const jobVacancy = await JobVacancySequelizeModel.create(jobVacancyData);
@@ -50,6 +50,33 @@ export class JobVacancySequelizeRepository implements AddJobVacancyRepository, F
           title: inner.title,
         }))
       }));
+    }
+
+    return result;
+  }
+
+  async loadById (id: string): Promise<LoadJobVacancyByIdRepository.Result>{
+    const jobVacancy = await JobVacancySequelizeModel.findByPk(id, {
+      include: [
+        {
+          model: SocialGroup,
+          as: 'socialGroups'
+        }
+      ]
+    });
+
+    let result: LoadJobVacancyByIdRepository.Result= null;
+
+    if (jobVacancy) {
+      result = {
+        id: jobVacancy.id,
+        description: jobVacancy.description,
+        recruiterId: jobVacancy.recruiterId,
+        title: jobVacancy.title,
+        company: jobVacancy.company,
+        wage: jobVacancy.wage,
+        socialGroupsIds: jobVacancy.socialGroups.map( item => (item.id))
+      };
     }
 
     return result;
