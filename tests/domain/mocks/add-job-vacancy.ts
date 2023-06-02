@@ -1,6 +1,7 @@
 import { AddJobVacancy } from "@/domain/usecases";
 
 import Chance from "chance";
+import { v4 } from "uuid";
 
 const chance = new Chance();
 

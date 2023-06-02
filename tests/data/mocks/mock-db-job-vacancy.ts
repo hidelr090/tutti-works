@@ -1,4 +1,4 @@
-import { AddJobVacancyRepository, LoadJobVacancyByIdRepository, UpdateJobVacancyRepository } from "@/data/protocols/db/repositories";
+import { AddJobVacancyRepository, AddJobVacancySocialGroupRepository, DeleteJobVacancySocialGroupRepository, LoadJobVacancyByIdRepository, UpdateJobVacancyRepository } from "@/data/protocols/db/repositories";
 import { UpdateJobVacancy } from "@/domain/usecases";
 
 import Chance from 'chance';
@@ -15,9 +15,9 @@ export class AddJobVacancyRepositorySpy implements AddJobVacancyRepository {
 
 export class UpdateJobVacancyRepositorySpy implements UpdateJobVacancyRepository {
   result = true;
-  data: UpdateJobVacancy.Params | undefined;
+  data: UpdateJobVacancyRepository.Params | undefined;
 
-  async update(jobVacancyId: string, jobVacancyData: UpdateJobVacancy.Params): Promise<boolean>{
+  async update(jobVacancyId: string, jobVacancyData: UpdateJobVacancyRepository.Params): Promise<boolean>{
     this.data = jobVacancyData;
     return this.result;
   }
@@ -45,4 +45,16 @@ export class LoadJobVacancyByIdRepositorySpy implements LoadJobVacancyByIdReposi
     };
   }
   
+}
+
+export class AddJobVacancySocialGroupRepositorySpy implements AddJobVacancySocialGroupRepository {
+  async add (jobVacancyId: string, socialGroupId: string): Promise<void>{
+    return
+  }
+}
+
+export class DeleteJobVacancySocialGroupRepositorySpy implements DeleteJobVacancySocialGroupRepository {
+  async delete (jobVacancyId: string, socialGroupId: string): Promise<void>{
+    return
+  }
 }

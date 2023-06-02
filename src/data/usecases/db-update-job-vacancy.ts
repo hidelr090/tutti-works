@@ -1,11 +1,12 @@
 import { UpdateJobVacancy } from "@/domain/usecases";
-import { UpdateJobVacancyRepository, DeleteJobVacancySocialGroupRepository} from "@/data/protocols/db/repositories";
+import { UpdateJobVacancyRepository, DeleteJobVacancySocialGroupRepository, AddJobVacancySocialGroupRepository} from "@/data/protocols/db/repositories";
 import { LoadJobVacancyByIdRepository } from "@/data/protocols/db/repositories";
 export class DbUpdateJobVacancy implements UpdateJobVacancy {
   constructor(
     private readonly updateJobVacancyRepository: UpdateJobVacancyRepository,
     private readonly loadJobVacancyByIdRepository: LoadJobVacancyByIdRepository,
-    private readonly deleteJobVacancySocialGroupRepository: DeleteJobVacancySocialGroupRepository
+    private readonly deleteJobVacancySocialGroupRepository: DeleteJobVacancySocialGroupRepository,
+    private readonly addJobVacancySocialGroupRepository: AddJobVacancySocialGroupRepository
   ){}
 
   async update(jobVacancyId: string, data: UpdateJobVacancy.Params): Promise<UpdateJobVacancy.Result> {
@@ -24,6 +25,12 @@ export class DbUpdateJobVacancy implements UpdateJobVacancy {
         }
       }
 
+      for (const item of data.socialGroupsIds) {
+        if (!socialGroups.includes(item)) {
+          await this.addJobVacancySocialGroupRepository.add(jobVacancyId, item);
+        }
+      }
+      
       result = true;
     }
 

@@ -1,12 +1,14 @@
 import { DbUpdateJobVacancy } from "@/data/usecases";
-import { UpdateJobVacancyRepositorySpy, LoadJobVacancyByIdRepositorySpy } from '@/tests/data/mocks';
+import { UpdateJobVacancyRepositorySpy, LoadJobVacancyByIdRepositorySpy, DeleteJobVacancySocialGroupRepositorySpy, AddJobVacancySocialGroupRepositorySpy } from '@/tests/data/mocks';
 import { throwError } from "@/tests/domain/mocks";
 import { mockUpdateJobVacancyParams } from "@/tests/domain/mocks/update-job-vacancy";
 
 type SutTypes = {
   sut: DbUpdateJobVacancy,
   updateJobVacancyRepositorySpy: UpdateJobVacancyRepositorySpy,
-  loadJobVacancyByIdRepositorySpy: LoadJobVacancyByIdRepositorySpy
+  loadJobVacancyByIdRepositorySpy: LoadJobVacancyByIdRepositorySpy,
+  addJobVacancySocialGroupRepositorySpy: AddJobVacancySocialGroupRepositorySpy,
+  deleteJobVacancySocialGroupRepositorySpy: DeleteJobVacancySocialGroupRepositorySpy,
 };
 
 const makeSut = (): SutTypes => {
@@ -15,12 +17,18 @@ const makeSut = (): SutTypes => {
 
   const loadJobVacancyByIdRepositorySpy = new LoadJobVacancyByIdRepositorySpy();
 
-  const sut = new DbUpdateJobVacancy(updateJobVacancyRepositorySpy, loadJobVacancyByIdRepositorySpy);
+  const deleteJobVacancySocialGroupRepositorySpy = new DeleteJobVacancySocialGroupRepositorySpy();
+
+  const addJobVacancySocialGroupRepositorySpy = new AddJobVacancySocialGroupRepositorySpy();
+
+  const sut = new DbUpdateJobVacancy(updateJobVacancyRepositorySpy, loadJobVacancyByIdRepositorySpy, deleteJobVacancySocialGroupRepositorySpy, addJobVacancySocialGroupRepositorySpy);
 
   return {
     sut,
     updateJobVacancyRepositorySpy,
-    loadJobVacancyByIdRepositorySpy
+    loadJobVacancyByIdRepositorySpy,
+    addJobVacancySocialGroupRepositorySpy,
+    deleteJobVacancySocialGroupRepositorySpy
   };
 
 }

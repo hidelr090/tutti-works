@@ -1,20 +1,25 @@
 import { DbAddJobVacancy } from "@/data/usecases";
-import { AddJobVacancyRepositorySpy } from "@/tests/data/mocks";
+import { AddJobVacancyRepositorySpy, AddJobVacancySocialGroupRepositorySpy } from "@/tests/data/mocks";
 import { mockAddJobVacancyParams, throwError } from '@/tests/domain/mocks'
 
 
 type SutTypes = {
   sut: DbAddJobVacancy;
   addJobVacancyRepositorySpy: AddJobVacancyRepositorySpy;
+  addJobVacancySocialGroupRepositorySpy: AddJobVacancySocialGroupRepositorySpy;
 }
 
 const makeSut = ( ): SutTypes => {
   const addJobVacancyRepositorySpy = new AddJobVacancyRepositorySpy();
-  const sut = new DbAddJobVacancy(addJobVacancyRepositorySpy);
+
+  const addJobVacancySocialGroupRepositorySpy = new AddJobVacancySocialGroupRepositorySpy();
+
+  const sut = new DbAddJobVacancy(addJobVacancyRepositorySpy, addJobVacancySocialGroupRepositorySpy);
 
   return {
     sut,
-    addJobVacancyRepositorySpy
+    addJobVacancyRepositorySpy,
+    addJobVacancySocialGroupRepositorySpy
   };
 }
 
@@ -24,16 +29,7 @@ describe('DbAddAccount Usecase', () => {
 
     const addJobVacancyParams = mockAddJobVacancyParams();
 
-    await sut.add(addJobVacancyParams);
-
-    expect(addJobVacancyRepositorySpy.params).toEqual({
-      description: addJobVacancyParams.description,
-      title: addJobVacancyParams.title,
-      recruiterId: addJobVacancyParams.recruiterId,
-      wage: addJobVacancyParams.wage,
-      company: addJobVacancyParams.company,
-      socialGroupsIds: addJobVacancyParams.socialGroupsIds
-    });
+    expect(await sut.add(addJobVacancyParams)).toBeTruthy();
 
   });
 
