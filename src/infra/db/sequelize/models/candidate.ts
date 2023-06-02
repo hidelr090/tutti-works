@@ -4,6 +4,8 @@ import { DataTypes, Model } from 'sequelize';
 import { User, UserSequelizeModel } from "./user";
 import { SocialGroup, SocialGroupSequelizeModel } from "./social-group";
 import { CandidateSocialGroup } from "./candidate-social-group";
+import { CandidateJobVacancy } from "./candidate-job-vacancy";
+import { JobVacancy, JobVacancySequelizeModel } from "./job-vacancy";
 
 export class Candidate extends Model {
   public id!: string;
@@ -14,6 +16,7 @@ export class Candidate extends Model {
 
   public user!: User;
   public socialGroups!: SocialGroup[];
+  public jobVacancies!: JobVacancy[];
 
   public static associate: () => void;
 }
@@ -48,7 +51,15 @@ Candidate.associate = () => {
       allowNull: false,
     },
     as: 'socialGroups'
-  })
+  });
+  Candidate.belongsToMany(JobVacancySequelizeModel, {
+    through: CandidateJobVacancy,
+    foreignKey: {
+      name: 'candidateId',
+      allowNull: false,
+    },
+    as: 'jobVacancies'
+  });
 };
 
 

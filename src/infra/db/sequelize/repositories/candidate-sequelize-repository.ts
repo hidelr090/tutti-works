@@ -1,18 +1,20 @@
-import { AddCandidateRepository, CheckCandidateByUserIdRepository, FindCandidateByUserIdRepository, ListCandidatesByRoleAndSocialGroupsRepository, UpdateCandidateRepository } from '@/data/protocols/db/repositories';
-import { SearchForCandidates, ShowCandidateProfile, UpdateCandidate } from '@/domain/usecases';
-import { Candidate, CandidateSequelizeModel, User, History, SocialGroup } from '@/infra/db/sequelize/models';
+import { AddCandidateRepository, CheckCandidateByUserIdRepository, FindCandidateByUserIdRepository, ListCandidateJobVacanciesRepository, ListCandidatesByRoleAndSocialGroupsRepository, UpdateCandidateRepository } from '@/data/protocols/db/repositories';
+import { Candidate, CandidateSequelizeModel, User, History, SocialGroup, JobVacancy } from '@/infra/db/sequelize/models';
 import { Op } from 'sequelize';
 
 Candidate.associate();
 SocialGroup.associate();
 User.associate();
 History.associate();
+JobVacancy.associate();
 export class CandidateSequelizeRepository implements 
   AddCandidateRepository, 
   CheckCandidateByUserIdRepository, 
   FindCandidateByUserIdRepository, 
   ListCandidatesByRoleAndSocialGroupsRepository, 
-  UpdateCandidateRepository{
+  UpdateCandidateRepository,
+  ListCandidateJobVacanciesRepository
+  {
 
   async add(candidateData: AddCandidateRepository.Params) : Promise<AddCandidateRepository.Result>{
     const candidate = await CandidateSequelizeModel.create(candidateData);
@@ -130,5 +132,37 @@ export class CandidateSequelizeRepository implements
     });
 
     return result !== null;
+  }
+
+  async listCandidateJobVacancies (candidateId: string):Promise<ListCandidateJobVacanciesRepository.Result> {
+    const applicationsList = await CandidateSequelizeModel.findByPk(candidateId, {include: [
+      {
+        model: JobVacancy,
+        as: 'jobVacancies',
+        include: [
+          {
+            model: SocialGroup,
+            as: 'socialGroups',
+          }
+        ]
+      }
+    ]});
+    let result:ListCandidateJobVacanciesRepository.Result = null;
+
+    if(applicationsList){
+      const jobVacancies = applicationsList.jobVacancies;
+      result = jobVacancies.map( item => ({
+        id: item.id,
+        jobVacancy: {
+          description: item.description,
+          recruiterId: item.recruiterId,
+          title: item.title,
+          company: item.company,
+          wage: item.wage
+        }        
+      }));
+    }
+    
+    return result;
   }
 }
