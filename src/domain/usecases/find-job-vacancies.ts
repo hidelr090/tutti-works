@@ -18,5 +18,5 @@ export namespace FindJobVacancies {
       id: string;
       title: string;
     }[];
-  }[];
+  }[] | null;
 }
