@@ -24,7 +24,7 @@ export class CandidateSequelizeRepository implements
     return candidate !== null;
   }
 
-  async findByUserId (userId: string): Promise<ShowCandidateProfile.Result>{
+  async findByUserId (userId: string): Promise<FindCandidateByUserIdRepository.Result>{
     const candidate = await CandidateSequelizeModel.findOne({ 
       where: { userId }, 
       include: [ 
@@ -66,7 +66,8 @@ export class CandidateSequelizeRepository implements
     }
   }
 
-  async listByRoleAndSocialGroups (jobInfos: SearchForCandidates.Params): Promise<SearchForCandidates.Result>{
+  async listByRoleAndSocialGroups (jobInfos: ListCandidatesByRoleAndSocialGroupsRepository.Params): 
+    Promise<ListCandidatesByRoleAndSocialGroupsRepository.Result>{
     
     const candidates = await CandidateSequelizeModel.findAll({
       where: {
@@ -121,7 +122,7 @@ export class CandidateSequelizeRepository implements
     }));
   } 
 
-  async update (candidateId: string, candidateData: UpdateCandidate.Params): Promise<boolean>{
+  async update (candidateId: string, candidateData: UpdateCandidateRepository.Params): Promise<boolean>{
     const result = await CandidateSequelizeModel.update(candidateData, {
       where: {
         id: candidateId

@@ -3,7 +3,7 @@ import { AddHistory, UpdateHistory } from '@/domain/usecases';
 import { HistorySequelizeModel } from '@/infra/db/sequelize/models';
 
 export class HistorySequelizeRepository implements AddHistoryRepository, LoadHistoryByIdRepository, UpdateHistoryRepository{
-  async add (historyData: AddHistory.Params): Promise<boolean>{
+  async add (historyData: AddHistoryRepository.Params): Promise<boolean>{
     const history = await HistorySequelizeModel.create(historyData);
     return history !== null;
   }
@@ -13,7 +13,7 @@ export class HistorySequelizeRepository implements AddHistoryRepository, LoadHis
     return history; 
   } 
 
-  async update (historyId: string, historyData: UpdateHistory.Params): Promise<boolean>{
+  async update (historyId: string, historyData: UpdateHistoryRepository.Params): Promise<boolean>{
     const history = await HistorySequelizeModel.update(historyData, {where: { id: historyId }});
     return history !==null;
   }

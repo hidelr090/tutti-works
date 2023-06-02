@@ -3,7 +3,7 @@ import { ListSocialGroups } from '@/domain/usecases';
 import { SocialGroupSequelizeModel } from '@/infra/db/sequelize/models';
 
 export class SocialGroupSequelizeRepository implements ListSocialGroupsRepository, FindSocialGroupsByCandidateIdRepository {
-  async list () :Promise<ListSocialGroups.Result>{
+  async list () :Promise<ListSocialGroupsRepository.Result>{
     const result = await SocialGroupSequelizeModel.findAll();
 
     return result.map(result => ({

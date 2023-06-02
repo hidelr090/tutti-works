@@ -5,7 +5,7 @@ import { Recruiter, RecruiterSequelizeModel } from '@/infra/db/sequelize/models'
 Recruiter.associate();
 
 export class RecruiterSequelizeRepository implements AddRecruiterRepository, CheckRecruiterByUserIdRepository, FindRecruiterByUserIdRepository, UpdateRecruiterRepository{
-  async add(recruiterData: AddRecruiter.Params): Promise<boolean>{
+  async add(recruiterData: AddRecruiterRepository.Params): Promise<boolean>{
     const recruiter = await RecruiterSequelizeModel.create(recruiterData);
 
     return recruiter !== null;
@@ -31,7 +31,7 @@ export class RecruiterSequelizeRepository implements AddRecruiterRepository, Che
     return result;
   }
 
-  async update(recruiterId: string, recruiterData: UpdateRecruiter.Params): Promise<boolean>{
+  async update(recruiterId: string, recruiterData: UpdateRecruiterRepository.Params): Promise<boolean>{
     const recruiter = await RecruiterSequelizeModel.update(recruiterData, {
       where: {id: recruiterId}
     });
