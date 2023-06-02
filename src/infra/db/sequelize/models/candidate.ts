@@ -21,7 +21,7 @@ export class Candidate extends Model {
 Candidate.init({
   ...BaseModel,
   userId: {
-    type: DataTypes.STRING,
+    type: DataTypes.UUID,
     allowNull: false,
   },
   description: {
