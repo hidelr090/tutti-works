@@ -11,6 +11,12 @@ export class JobVacancy extends Model {
   public userId!: string;
   public description!: string;
   public role!: string;
+  public recruiterId!: string;
+  public title!: string;
+  public company!: string;
+  public wage!: number;
+
+  public socialGroups!: SocialGroup[];
 
   public static associate: () => void;
 }
@@ -48,7 +54,7 @@ JobVacancy.init({
 
 JobVacancy.associate = () => {
   JobVacancy.belongsTo(RecruiterSequelizeModel, { foreignKey: 'recruiterId', as: 'recruiter'});
-  SocialGroup.belongsToMany(SocialGroupSequelizeModel, { 
+  JobVacancy.belongsToMany(SocialGroupSequelizeModel, { 
     through: JobVacancySocialGroup,
     foreignKey: {
       name: 'jobVacancyId',
