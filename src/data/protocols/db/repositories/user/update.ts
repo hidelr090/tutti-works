@@ -6,5 +6,5 @@ export interface UpdateUserRepository {
 
 export namespace UpdateUserRepository {
   export type Params = UpdateUser.Params;
-  export type Result = Params;
+  export type Result = void;
 }

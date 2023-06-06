@@ -1,7 +1,7 @@
-import { AddUserRepository, CheckUserByEmailRepository, LoadUserByEmailRepository, LoadUserByIdRepository, LoadUserByTokenRepository, UpdateAccessTokenRepository, CheckUserByIdentifierCodeRepository} from "@/data";
+import { AddUserRepository, CheckUserByEmailRepository, LoadUserByEmailRepository, LoadUserByIdRepository, LoadUserByTokenRepository, UpdateAccessTokenRepository, CheckUserByIdentifierCodeRepository, UpdateUserRepository} from "@/data";
 import { UserSequelizeModel } from "@/infra/db/sequelize/models";
 
-export class UserSequelizeRepository implements AddUserRepository, LoadUserByEmailRepository, CheckUserByEmailRepository, LoadUserByIdRepository, UpdateAccessTokenRepository, LoadUserByTokenRepository, CheckUserByIdentifierCodeRepository{
+export class UserSequelizeRepository implements AddUserRepository, LoadUserByEmailRepository, CheckUserByEmailRepository, LoadUserByIdRepository, UpdateAccessTokenRepository, LoadUserByTokenRepository, CheckUserByIdentifierCodeRepository, UpdateUserRepository{
   async add (data: AddUserRepository.Params): Promise<AddUserRepository.Result> {
     const user = await UserSequelizeModel.create(data);
     return user !== null;
@@ -50,4 +50,7 @@ export class UserSequelizeRepository implements AddUserRepository, LoadUserByEma
     return user !== null;
   }
 
+  async update (userId: string, data: UpdateUserRepository.Params): Promise<UpdateUserRepository.Result>{
+    await UserSequelizeModel.update(data, { where: { id: userId } });
+  }
 }
