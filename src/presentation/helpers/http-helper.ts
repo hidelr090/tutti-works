@@ -1,5 +1,7 @@
 import { HttpResponse } from '@/presentation/protocols'
 import { ServerError, UnauthorizedError } from '@/presentation/errors'
+import { NotFoundError } from '../errors/not-found-error'
+import { Error } from 'sequelize'
 
 export const badRequest = (error: Error): HttpResponse => ({
   statusCode: 400,
@@ -30,3 +32,8 @@ export const noContent = (): HttpResponse => ({
   statusCode: 204,
   body: null
 })
+
+export const notFound = (error: Error): HttpResponse => ({
+  statusCode: 404,
+  body: new NotFoundError(error.stack)
+});
