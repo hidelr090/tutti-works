@@ -1,8 +1,7 @@
-import { FindSocialGroupsByCandidateIdRepository, ListSocialGroupsRepository } from '@/data/protocols/db/repositories';
-import { ListSocialGroups } from '@/domain/usecases';
+import { ListSocialGroupsRepository } from '@/data/protocols/db/repositories';
 import { SocialGroupSequelizeModel } from '@/infra/db/sequelize/models';
 
-export class SocialGroupSequelizeRepository implements ListSocialGroupsRepository, FindSocialGroupsByCandidateIdRepository {
+export class SocialGroupSequelizeRepository implements ListSocialGroupsRepository {
   async list () :Promise<ListSocialGroupsRepository.Result>{
     const result = await SocialGroupSequelizeModel.findAll();
 
@@ -13,9 +12,4 @@ export class SocialGroupSequelizeRepository implements ListSocialGroupsRepositor
     })) || null;
   }
 
-  async findByCandidateId(candidateId: string): Promise<FindSocialGroupsByCandidateIdRepository.Result>{
-    const found = await SocialGroupSequelizeModel.findAll({where: { candidateId }});
-
-    return found.map(item => item.id);
-  }
 }
