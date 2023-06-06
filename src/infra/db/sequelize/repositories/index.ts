@@ -4,5 +4,6 @@ export * from './recruiter-sequelize-repository';
 export * from './candidate-social-group-sequelize-repository';
 export * from './candidate-job-vacancy-sequelize-repository';
 export * from './history-sequelize-repository';
+export * from './job-vacancy-sequelize-repository';
 export * from './social-group-sequelize-repository';
 export * from './job-vacancy-social-group-sequelize-repository';
