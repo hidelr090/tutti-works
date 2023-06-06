@@ -3,7 +3,7 @@ import { AddJobVacancy } from "@/domain/usecases";
 import { JobVacancySequelizeRepository, JobVacancySocialGroupSequelizeRepository } from "@/infra/db/sequelize/repositories";
 
 export const makeDbAddJobVacancy = (): AddJobVacancy => {
-  const jobVacancySequelizeRepository = new JobVacancySequelizeRepository();
+  const jobVacancyRepository = new JobVacancySequelizeRepository();
   const jobVacancySocialGroupRepository = new JobVacancySocialGroupSequelizeRepository();
-  return new DbAddJobVacancy(jobVacancySequelizeRepository, jobVacancySocialGroupRepository);
+  return new DbAddJobVacancy(jobVacancyRepository, jobVacancySocialGroupRepository);
 };
