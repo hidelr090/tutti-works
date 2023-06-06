@@ -11,6 +11,7 @@ export * from './db-add-candidate-job-vacancy';
 export * from './db-find-candidate-profile';
 export * from './db-find-job-vacancies';
 export * from './db-list-candidate-applications';
+export * from './db-list-candidates-by-role-and-social-groups';
 export * from './db-list-recruiter-job-vacancies';
 export * from './db-list-social-groups';
 export * from './db-load-user-by-token';
