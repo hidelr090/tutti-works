@@ -10,3 +10,4 @@ export * from './db-update-job-vacancy';
 export * from './db-add-candidate-job-vacancy';
 export * from './db-find-candidate-profile';
 export * from './db-find-job-vacancies';
+export * from './db-list-candidate-applications';
