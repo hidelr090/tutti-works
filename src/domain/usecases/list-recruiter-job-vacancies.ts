@@ -13,5 +13,5 @@ export namespace ListRecruiterJobVacancies {
       id: string;
       title: string;
     }[];
-  }[];
+  }[] | null;
 }

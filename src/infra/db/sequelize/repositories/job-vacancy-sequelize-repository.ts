@@ -1,9 +1,10 @@
-import { AddJobVacancyRepository, FindJobVacanciesRepository, LoadJobVacancyByIdRepository, UpdateJobVacancyRepository } from "@/data";
-import { JobVacancy, JobVacancySequelizeModel, SocialGroup } from "@/infra/db/sequelize/models";
+import { AddJobVacancyRepository, FindJobVacanciesRepository, ListJobVacanciesByRecruiterIdRepository, LoadJobVacancyByIdRepository, UpdateJobVacancyRepository } from "@/data";
+import { ListRecruiterJobVacancies } from "@/domain/usecases";
+import { JobVacancy, JobVacancySequelizeModel, Recruiter, SocialGroup } from "@/infra/db/sequelize/models";
 import { Op } from "sequelize";
 
 JobVacancy.associate();
-export class JobVacancySequelizeRepository implements AddJobVacancyRepository, FindJobVacanciesRepository, LoadJobVacancyByIdRepository, UpdateJobVacancyRepository{
+export class JobVacancySequelizeRepository implements AddJobVacancyRepository, FindJobVacanciesRepository, LoadJobVacancyByIdRepository, UpdateJobVacancyRepository, ListJobVacanciesByRecruiterIdRepository{
   async add(jobVacancyData: AddJobVacancyRepository.Params): Promise<boolean>{
 
     const jobVacancy = await JobVacancySequelizeModel.create(jobVacancyData);
@@ -86,5 +87,39 @@ export class JobVacancySequelizeRepository implements AddJobVacancyRepository, F
     const updated = await JobVacancySequelizeModel.update(jobVacancyData, { where: { id: jobVacancyId }});
 
     return updated !== null;
+  }
+
+  async listByRecruiterId(recruiterId: string): Promise<ListJobVacanciesByRecruiterIdRepository.Result>{
+    let result = null;
+
+    const jobVacancies = await JobVacancySequelizeModel.findAll({
+      include: [
+        {
+          model: Recruiter,
+          as: 'recruiter',
+          where: { id: recruiterId }
+        },
+        {
+          model: SocialGroup,
+          as: 'socialGroups'
+        }
+      ]
+    });
+
+    if(jobVacancies.length > 0){
+      result = jobVacancies.map(item => ({
+        description: item.description,
+        recruiterId: item.recruiterId,
+        title: item.title,
+        company: item.company,
+        wage: item.wage,
+        socialGroups: item.socialGroups.map(inner => ({
+          id: inner.id,
+          title: inner.title
+        }))
+      }));
+    }
+
+    return result;
   }
 }
