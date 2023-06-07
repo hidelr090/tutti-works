@@ -16,3 +16,4 @@ export * from './update-job-vacancy-factory';
 export * from './update-recruiter-factory';
 export * from './update-history-factory';
 export * from './submit-application-factory';
+export * from './list-candidates-by-role-and-social-groups-factory';
