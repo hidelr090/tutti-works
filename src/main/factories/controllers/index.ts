@@ -21,3 +21,5 @@ export * from './list-recruiter-job-vacancies-controller-factory';
 export * from './search-for-candidates-controller-factory';
 export * from './update-candidate-controller-factory';
 export * from './update-candidate-validation-factory';
+export * from './update-history-controller-factory';
+export * from './update-history-validation-factory';
