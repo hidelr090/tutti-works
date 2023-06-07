@@ -12,3 +12,4 @@ export * from './list-social-groups-controller';
 export * from './search-for-candidates-controller';
 export * from './update-candidate-controller';
 export * from './update-history-controller';
+export * from './update-job-vacancy-controller';
