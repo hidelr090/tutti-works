@@ -1,13 +1,14 @@
 import { Controller } from '@/presentation/protocols'
 import { CustomRequest } from '@/types'
 
-import { Response } from 'express'
+import { Response } from 'express';
 
 export const adaptRoute = (controller: Controller) => {
   return async (req: CustomRequest, res: Response) => {
     const request = {
       ...(req.body || {}),
       ...(req.params || {}),
+      ...(req.query || {}),
       userId: req.userId
     }
     const httpResponse = await controller.handle(request)

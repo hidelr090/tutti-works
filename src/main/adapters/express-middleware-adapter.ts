@@ -1,12 +1,13 @@
 import { Middleware } from '@/presentation/protocols'
+import { CustomRequest } from '@/types'
 
-import { Request, Response, NextFunction } from 'express'
+import { Response, NextFunction } from 'express'
 
 export const adaptMiddleware = (middleware: Middleware) => {
-  return async (req: Request, res: Response, next: NextFunction) => {
+  return async (req: CustomRequest, res: Response, next: NextFunction) => {
     const request = {
       accessToken: req.headers?.['x-access-token'],
-      ...(req.headers || {})
+      ...(req.headers || {}),
     }
     const httpResponse = await middleware.handle(request)
     if (httpResponse.statusCode === 200) {
