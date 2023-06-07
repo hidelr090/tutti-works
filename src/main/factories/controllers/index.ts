@@ -12,3 +12,5 @@ export * from './add-job-vacancy-controller-factory';
 export * from './add-job-vacancy-validation-factory';
 export * from './submit-application-controller-factory';
 export * from './submit-application-validation-factory';
+export * from './login-controller-factory';
+export * from './login-validation-factory';
