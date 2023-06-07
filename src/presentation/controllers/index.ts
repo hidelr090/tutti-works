@@ -14,3 +14,4 @@ export * from './update-candidate-controller';
 export * from './update-history-controller';
 export * from './update-job-vacancy-controller';
 export * from './update-recruiter-controller';
+export * from './update-user-controller';

@@ -27,3 +27,5 @@ export * from './update-job-vacancy-controller-factory';
 export * from './update-job-vacancy-validation-factory';
 export * from './update-recruiter-controller-factory';
 export * from './update-recruiter-validation-factory';
+export * from './update-user-controller-factory';
+export * from './update-user-validation-factory';
