@@ -6,7 +6,7 @@ import { LoadUserByToken } from '@/domain/usecases';
 export class AuthMiddleware implements Middleware {
   constructor(
     private readonly loadUserByToken: LoadUserByToken,
-    private readonly role?: string
+    private readonly role?: number
   ){}
 
   async handle (httpRequest: any): Promise<HttpResponse>{
