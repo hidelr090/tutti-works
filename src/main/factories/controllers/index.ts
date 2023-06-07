@@ -16,5 +16,6 @@ export * from './login-controller-factory';
 export * from './login-validation-factory';
 export * from './find-job-vacancies-controller-factory';
 export * from './list-candidate-applications-controller-factory';
+export * from './list-social-groups-controller-factory';
 export * from './list-recruiter-job-vacancies-controller-factory';
 export * from './search-for-candidates-controller-factory';
