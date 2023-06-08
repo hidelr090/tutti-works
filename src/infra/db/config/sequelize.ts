@@ -1,5 +1,8 @@
 import { Sequelize } from "sequelize";
 import { Dialect } from "sequelize/types";
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const sequelizeConfig = {
   dialect: "mysql" as Dialect,
@@ -9,6 +12,12 @@ const sequelizeConfig = {
   database: process.env.DB_DATABASE || 'tutti_dev',
   port: Number(process.env.DB_PORT) || 3306,
   logging: false,
+  URL: process.env.DB_URL || 'jdbc:mysql://localhost:3306/tutti_dev',
+  dialectOptions: {
+    ssl: {
+      rejectUnauthorized: true
+    }
+  }
 }
 
 export const sequelize = new Sequelize(sequelizeConfig);
