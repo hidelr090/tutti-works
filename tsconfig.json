@@ -17,6 +17,6 @@
       "@/*": ["*"]
     }                                 /* Skip type checking all .d.ts files. */
   },
-  "include": ["src", "tests", "src/main/factories/usecases/search-for-candidates-factory.ts"],
+  "include": ["src", "tests"],
   "exclude": []
 }
