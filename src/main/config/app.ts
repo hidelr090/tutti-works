@@ -1,7 +1,7 @@
 import express from 'express';
-import { router } from './routes';
+import router from './routes';
 import "reflect-metadata";
-import {sequelize} from '@/infra/db/config/sequelize';
+import { sequelize } from '@/infra/db/config/sequelize';
 import { setupMiddlewares } from './middlewares';
 
 export class App {
@@ -20,7 +20,7 @@ export class App {
   }
 
   private router() {
-    this.server.use(router);
+    router(this.server);
   }
 
   private async sequelize() {
