@@ -28,10 +28,6 @@ module.exports = {
       userId: {
         type: Sequelize.UUID,
         allowNull: false,
-        references: {
-          model: 'user',
-          key: 'id',
-        }
       },
       company: {
         type: Sequelize.STRING,

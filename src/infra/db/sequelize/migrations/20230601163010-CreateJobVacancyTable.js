@@ -33,10 +33,6 @@ module.exports = {
       recruiterId: {
         type: Sequelize.UUID,
         allowNull: true,
-        references: {
-          model: 'recruiter',
-          key: 'id',
-        },
         defaultValue: null
       },
       title: {

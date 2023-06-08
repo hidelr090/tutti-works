@@ -28,19 +28,11 @@ module.exports = {
         type: Sequelize.UUID,
         allowNull: true,
         defaultValue: null,
-        references: {
-          model: 'candidate',
-          key: 'id',
-        }
       },
       socialGroupId: {
         type: Sequelize.UUID,
         allowNull: true,
         defaultValue: null,
-        references: {
-          model: 'social-group',
-          key: 'id',
-        }
       }
     });
   },
