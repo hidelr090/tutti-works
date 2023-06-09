@@ -53,7 +53,7 @@ JobVacancy.init({
 });
 
 JobVacancy.associate = () => {
-  JobVacancy.belongsTo(RecruiterSequelizeModel, { foreignKey: 'recruiterId', as: 'recruiter'});
+  JobVacancy.belongsTo(RecruiterSequelizeModel, { foreignKey: 'recruiterId'});
   JobVacancy.belongsToMany(SocialGroupSequelizeModel, { 
     through: JobVacancySocialGroup,
     foreignKey: {
@@ -61,7 +61,6 @@ JobVacancy.associate = () => {
       allowNull: false,
     },
     otherKey: 'socialGroupId',
-    as: 'socialGroups'
   });
 };
 

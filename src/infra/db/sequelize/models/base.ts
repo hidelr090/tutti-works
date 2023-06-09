@@ -3,7 +3,7 @@ import { v4 } from 'uuid';
 
 export const BaseModel = {
   id: {
-    type: DataTypes.UUIDV4,
+    type: DataTypes.UUID,
     defaultValue: () => v4(),
     allowNull: false,
     primaryKey: true

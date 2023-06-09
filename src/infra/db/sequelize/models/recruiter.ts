@@ -31,7 +31,7 @@ Recruiter.init({
 });
 
 Recruiter.associate = () => {
-  Recruiter.belongsTo(UserSequelizeModel, { foreignKey: 'userId', as: 'user'});
+  Recruiter.belongsTo(UserSequelizeModel, { foreignKey: 'userId'});
 };
 
 

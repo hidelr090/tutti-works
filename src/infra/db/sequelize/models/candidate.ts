@@ -43,14 +43,13 @@ Candidate.init({
 });
 
 Candidate.associate = () => {
-  Candidate.belongsTo(UserSequelizeModel, { foreignKey: 'userId', as: 'user'});
+  Candidate.belongsTo(UserSequelizeModel, { foreignKey: 'userId'});
   Candidate.belongsToMany(SocialGroupSequelizeModel, {
     through: CandidateSocialGroup,
     foreignKey: {
       name: 'candidateId',
       allowNull: false,
     },
-    as: 'socialGroups'
   });
   Candidate.belongsToMany(JobVacancySequelizeModel, {
     through: CandidateJobVacancy,
@@ -58,7 +57,6 @@ Candidate.associate = () => {
       name: 'candidateId',
       allowNull: false,
     },
-    as: 'jobVacancies'
   });
 };
 

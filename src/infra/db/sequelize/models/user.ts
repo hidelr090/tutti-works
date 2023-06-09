@@ -3,6 +3,7 @@ import { BaseModel } from './base';
 import { DataTypes, Model } from 'sequelize';
 import { HistorySequelizeModel, History } from './history';
 import { Candidate, CandidateSequelizeModel } from './candidate';
+import { RecruiterSequelizeModel } from './recruiter';
 
 export class User extends Model {
   public id!: string;
@@ -81,6 +82,13 @@ User.associate = () => {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
     constraints: true,
+  });
+  User.hasMany(RecruiterSequelizeModel, {
+    foreignKey: 'userId',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+    constraints: true,
+    as: 'recruiter',
   });
 };
 

@@ -15,7 +15,7 @@ const sequelizeConfig = {
   URL: process.env.DB_URL || 'jdbc:mysql://localhost:3306/tutti_dev',
   dialectOptions: {
     ssl: {
-      rejectUnauthorized: true
+      rejectUnauthorized: false
     }
   }
 }

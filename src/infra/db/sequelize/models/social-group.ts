@@ -42,7 +42,6 @@ SocialGroup.associate = () => {
       allowNull: false,
     },
     otherKey: 'candidateId',
-    as: 'candidates'
   });
   SocialGroup.belongsToMany(JobVacancySequelizeModel, { 
     through: JobVacancySocialGroup,
@@ -51,7 +50,6 @@ SocialGroup.associate = () => {
       allowNull: false,
     },
     otherKey: 'jobVacancyId',
-    as: 'jobVacancies'
   });
 };
 

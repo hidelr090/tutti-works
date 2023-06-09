@@ -47,7 +47,7 @@ History.init({
 });
 
 History.associate = () => {
-  History.belongsTo(UserSequelizeModel, { foreignKey: 'userId', as: 'user'});
+  History.belongsTo(UserSequelizeModel, { foreignKey: 'userId'});
 };
 
 type HistoryModelStatic = typeof Model & {

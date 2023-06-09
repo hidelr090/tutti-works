@@ -16,18 +16,10 @@ JobVacancySocialGroup.init({
   jobVacancyId: {
     type: DataTypes.STRING,
     allowNull: false,
-    references: {
-      model: 'job-vacancy',
-      key: 'id'
-    }
   },
   socialGroupId: {
     type: DataTypes.STRING,
     allowNull: false,
-    references: {
-      model: 'social-group',
-      key: 'id'
-    }
   }
 }, {
   sequelize,
