@@ -76,14 +76,14 @@ User.associate = () => {
     onUpdate: 'CASCADE',
     constraints: true,
   });
-  User.hasMany(CandidateSequelizeModel, {
+  User.hasOne(CandidateSequelizeModel, {
     foreignKey: 'userId',
     as: 'candidate',
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
     constraints: true,
   });
-  User.hasMany(RecruiterSequelizeModel, {
+  User.hasOne(RecruiterSequelizeModel, {
     foreignKey: 'userId',
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',

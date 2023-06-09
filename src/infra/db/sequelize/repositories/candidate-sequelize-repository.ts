@@ -32,7 +32,7 @@ export class CandidateSequelizeRepository implements
       include: [ 
         { 
           model: User, 
-          as:'user', 
+          as:'User', 
           include: 
           [
             { model: History, as: 'histories' }
@@ -70,7 +70,6 @@ export class CandidateSequelizeRepository implements
 
   async listByRoleAndSocialGroups (jobInfos: ListCandidatesByRoleAndSocialGroupsRepository.Params): 
     Promise<ListCandidatesByRoleAndSocialGroupsRepository.Result>{
-    
     const candidates = await CandidateSequelizeModel.findAll({
       where: {
         role: {
@@ -90,16 +89,15 @@ export class CandidateSequelizeRepository implements
         },
         {
           model: SocialGroup,
-          as: 'socialGroups',
-          where: {
+          as: 'SocialGroups',
+          where: jobInfos.socialGroupsIds && jobInfos.socialGroupsIds.length > 0 ? {
             id: {
               [Op.in]: jobInfos.socialGroupsIds
             }
-          }
+          } : {},
         }
       ]
     });
-
     return candidates.map(candidate => ({
       user: {
         id: candidate.user.id,
@@ -142,7 +140,7 @@ export class CandidateSequelizeRepository implements
         include: [
           {
             model: SocialGroup,
-            as: 'socialGroups',
+            as: 'SocialGroups',
           }
         ]
       }

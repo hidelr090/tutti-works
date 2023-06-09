@@ -57,6 +57,7 @@ Candidate.associate = () => {
       name: 'candidateId',
       allowNull: false,
     },
+    as: 'jobVacancies'
   });
 };
 

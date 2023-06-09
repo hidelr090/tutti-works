@@ -96,12 +96,12 @@ export class JobVacancySequelizeRepository implements AddJobVacancyRepository, F
       include: [
         {
           model: Recruiter,
-          as: 'recruiter',
+          as: 'Recruiter',
           where: { id: recruiterId }
         },
         {
           model: SocialGroup,
-          as: 'socialGroups'
+          as: 'SocialGroups'
         }
       ]
     });
