@@ -7,7 +7,7 @@ module.exports = {
       id: {
         type: Sequelize.UUID,
         primaryKey: true,
-        defaultValue: Sequelize.UUIDV4
+        defaultValue: Sequelize.UUID
       },
       createdAt: {
         type: Sequelize.DATE,
