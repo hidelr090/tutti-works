@@ -10,11 +10,11 @@ export class DbAddCandidate implements AddCandidate {
   async add(candidateData: AddCandidate.Params): Promise<AddCandidate.Result> {
 
     const exists = await this.checkCandidateByUserIdRepository.checkByUserId(candidateData.userId);
-    let result = false;
+
+    let result = null;
 
     if(!exists){
-      await this.addCandidateRepository.add(candidateData);
-      result = true;
+      result = await this.addCandidateRepository.add(candidateData);
     }
 
     return result;

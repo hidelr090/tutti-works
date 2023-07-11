@@ -13,7 +13,7 @@ module.exports = {
       'PCD',
       'Outros'
     ];
-    await queryInterface.bulkInsert('social-group', titles.map(title => ({
+    await queryInterface.bulkInsert('social_group', titles.map(title => ({
       id: v4(),
       title: title,
       createdAt: new Date(),
@@ -22,6 +22,7 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('social-group', null, {});
+    await queryInterface.bulkDelete('social_group', null, {});
+    await queryInterface.dropTable('social-group');
   }
 };

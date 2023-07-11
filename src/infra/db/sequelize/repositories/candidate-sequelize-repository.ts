@@ -18,7 +18,7 @@ export class CandidateSequelizeRepository implements
 
   async add(candidateData: AddCandidateRepository.Params) : Promise<AddCandidateRepository.Result>{
     const candidate = await CandidateSequelizeModel.create(candidateData);
-    return candidate !== null;
+    return candidate.id || null;
   }
 
   async checkByUserId (userId: string): Promise<boolean>{

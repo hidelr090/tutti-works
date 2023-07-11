@@ -9,5 +9,5 @@ export namespace AddCandidate {
     role: string;
   }
 
-  export type Result = boolean;
+  export type Result = string | null | undefined;
 }

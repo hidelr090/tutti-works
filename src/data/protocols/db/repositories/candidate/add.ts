@@ -6,5 +6,5 @@ export interface AddCandidateRepository {
 
 export namespace AddCandidateRepository {
   export type Params = AddCandidate.Params;
-  export type Result = boolean;
+  export type Result = string | null | undefined;
 }
