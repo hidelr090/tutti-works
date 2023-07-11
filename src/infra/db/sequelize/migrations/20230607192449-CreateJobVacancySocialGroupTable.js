@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('job-vacancy-social-group', {
+    await queryInterface.createTable('job_vacancy_social_group', {
       id: {
         type: Sequelize.UUID,
         primaryKey: true,
@@ -38,6 +38,6 @@ module.exports = {
   },
 
   async down (queryInterface) {
-    await queryInterface.dropTable('job-vacancy-social-group');
+    await queryInterface.dropTable('job_vacancy_social_group');
   }
 };

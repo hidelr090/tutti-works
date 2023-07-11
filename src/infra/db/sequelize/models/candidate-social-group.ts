@@ -25,13 +25,13 @@ CandidateSocialGroup.init({
     type: DataTypes.STRING,
     allowNull: false,
     references: {
-      model: 'social-group',
+      model: 'social_group',
       key: 'id'
     }
   }
 }, {
   sequelize,
-  tableName: 'candidate-social-group'
+  tableName: 'candidate_social_group'
 });
 
 type CandidateSocialGroupModelStatic = typeof Model & {

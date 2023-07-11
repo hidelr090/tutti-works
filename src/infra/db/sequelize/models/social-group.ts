@@ -31,7 +31,7 @@ SocialGroup.init({
   }
 }, {
   sequelize,
-  tableName: 'social-group'
+  tableName: 'social_group'
 });
 
 SocialGroup.associate = () => {
