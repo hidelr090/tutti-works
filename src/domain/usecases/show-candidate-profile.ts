@@ -1,5 +1,5 @@
 export interface ShowCandidateProfile {
-  showCandidateProfile: (candidateId: string) => Promise<ShowCandidateProfile.Result>;
+  showCandidateProfile: (userId: string) => Promise<ShowCandidateProfile.Result>;
 }
 
 export namespace ShowCandidateProfile {

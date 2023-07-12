@@ -9,8 +9,7 @@ export class ShowCandidateProfileController implements Controller {
 
   async handle(request: ShowCandidateProfileController.Request): Promise<HttpResponse>{
     try{
-      const profile = await this.showCandidateProfile.showCandidateProfile(request);
-      
+      const profile = await this.showCandidateProfile.showCandidateProfile(request.userId);
       if(!profile)
         return notFound(new Error(`
           Candidate profile with id ${request} is not found
@@ -18,11 +17,14 @@ export class ShowCandidateProfileController implements Controller {
 
       return ok(profile);
     }catch(err){
+      console.error(err);
       return serverError(err as Error);
     }
   }
 }
 
 export namespace ShowCandidateProfileController {
-  export type Request = string;
+  export type Request = {
+    userId: string
+  };
 }

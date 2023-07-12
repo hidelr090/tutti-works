@@ -6,9 +6,9 @@ export class DbFindCandidateProfile implements ShowCandidateProfile{
     private readonly findCandidateByUserIdRepository: FindCandidateByUserIdRepository
   ){}
 
-  async showCandidateProfile (candidateId: string): Promise<ShowCandidateProfile.Result>{
+  async showCandidateProfile (userId: string): Promise<ShowCandidateProfile.Result>{
     
-    const result = await this.findCandidateByUserIdRepository.findByUserId(candidateId);
+    const result = await this.findCandidateByUserIdRepository.findByUserId(userId);
     
     return result;
   }

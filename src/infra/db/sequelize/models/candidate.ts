@@ -43,7 +43,7 @@ Candidate.init({
 });
 
 Candidate.associate = () => {
-  Candidate.belongsTo(UserSequelizeModel, { foreignKey: 'userId'});
+  Candidate.belongsTo(UserSequelizeModel, { foreignKey: 'userId', as: 'user'});
   Candidate.belongsToMany(SocialGroupSequelizeModel, {
     through: CandidateSocialGroup,
     foreignKey: {

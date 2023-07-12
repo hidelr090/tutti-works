@@ -4,7 +4,8 @@ import {
   makeAddCandidateSocialGroupsController, 
   makeListCandidateApplicationsController,
   makeUpdateCandidateController,
-  makeSearchForCandidatesController
+  makeSearchForCandidatesController,
+  makeShowCandidateProfileController
 } from '@/main/factories';
 
 import { Router } from 'express';
@@ -16,4 +17,5 @@ export default (router: Router): void => {
   router.get('/candidate-applications', adaptRoute(makeListCandidateApplicationsController()));
   router.put('/candidate', auth, adaptRoute(makeUpdateCandidateController()));
   router.get('/candidate-browse', adaptRoute(makeSearchForCandidatesController()));
+  router.get('/candidate-profile', auth, adaptRoute(makeShowCandidateProfileController()));
 };

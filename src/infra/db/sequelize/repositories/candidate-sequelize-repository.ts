@@ -32,7 +32,7 @@ export class CandidateSequelizeRepository implements
       include: [ 
         { 
           model: User, 
-          as:'User', 
+          as:'user', 
           include: 
           [
             { model: History, as: 'histories' }
@@ -41,9 +41,10 @@ export class CandidateSequelizeRepository implements
       ]
     }) as Candidate;
 
+    console.log(candidate);
     const user = candidate?.user as User;
     const histories = user?.histories as History[];
-
+    console.log(user);
     return {
       user: {
           id: user.id,

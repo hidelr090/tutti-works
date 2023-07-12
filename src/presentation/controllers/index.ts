@@ -10,6 +10,7 @@ export * from './list-candidate-applications-controller';
 export * from './list-recruiter-job-vacancies-controller';
 export * from './list-social-groups-controller';
 export * from './search-for-candidates-controller';
+export * from './show-candidate-profile-controller';
 export * from './update-candidate-controller';
 export * from './update-history-controller';
 export * from './update-job-vacancy-controller';
