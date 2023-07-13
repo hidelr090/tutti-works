@@ -14,6 +14,7 @@ export * from './submit-application-controller-factory';
 export * from './submit-application-validation-factory';
 export * from './login-controller-factory';
 export * from './login-validation-factory';
+export * from './load-user-by-id-controller-factory';
 export * from './find-job-vacancies-controller-factory';
 export * from './list-candidate-applications-controller-factory';
 export * from './list-social-groups-controller-factory';

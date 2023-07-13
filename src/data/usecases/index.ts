@@ -20,3 +20,4 @@ export * from './db-list-candidates-by-role-and-social-groups';
 export * from './db-list-recruiter-job-vacancies';
 export * from './db-list-social-groups';
 export * from './db-load-user-by-token';
+export * from './db-load-user-by-id';
