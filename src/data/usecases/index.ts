@@ -21,3 +21,4 @@ export * from './db-list-recruiter-job-vacancies';
 export * from './db-list-social-groups';
 export * from './db-load-user-by-token';
 export * from './db-load-user-by-id';
+export * from './db-load-recruiter-by-user-id';

@@ -11,6 +11,7 @@ export * from './list-recruiter-job-vacancies-factory';
 export * from './list-social-groups-factory';
 export * from './load-user-by-token-factory';
 export * from './load-user-by-id-factory';
+export * from './load-recruiter-by-user-id-factory';
 export * from './update-candidate-factory';
 export * from './update-user-factory';
 export * from './update-job-vacancy-factory';

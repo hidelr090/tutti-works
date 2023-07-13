@@ -19,6 +19,7 @@ export * from './find-job-vacancies-controller-factory';
 export * from './list-candidate-applications-controller-factory';
 export * from './list-social-groups-controller-factory';
 export * from './list-recruiter-job-vacancies-controller-factory';
+export * from './load-recruiter-by-user-id-controller-factory';
 export * from './search-for-candidates-controller-factory';
 export * from './show-candidate-profile-controller-factory';
 export * from './update-candidate-controller-factory';
