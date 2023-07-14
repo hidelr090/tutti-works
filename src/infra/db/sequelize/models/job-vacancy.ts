@@ -16,7 +16,7 @@ export class JobVacancy extends Model {
   public company!: string;
   public wage!: number;
 
-  public socialGroups!: SocialGroup[];
+  public SocialGroups!: SocialGroup[];
 
   public static associate: () => void;
 }
@@ -49,7 +49,7 @@ JobVacancy.init({
   }
 }, {
   sequelize,
-  tableName: 'JobVacancy'
+  tableName: 'job_vacancy'
 });
 
 JobVacancy.associate = () => {

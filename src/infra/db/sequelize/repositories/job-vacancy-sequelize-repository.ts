@@ -27,7 +27,7 @@ export class JobVacancySequelizeRepository implements AddJobVacancyRepository, F
       include:[
         {
           model: SocialGroup,
-          as: 'socialGroups',
+          as: 'SocialGroups',
           where: {
             id: {
               [Op.in]: data.socialGroupsIds
@@ -46,7 +46,7 @@ export class JobVacancySequelizeRepository implements AddJobVacancyRepository, F
         title: item.title,
         company: item.company,
         wage: item.wage,
-        socialGroups: item.socialGroups.map(inner => ({
+        socialGroups: item.SocialGroups.map(inner => ({
           id: inner.id,
           title: inner.title,
         }))
@@ -61,7 +61,7 @@ export class JobVacancySequelizeRepository implements AddJobVacancyRepository, F
       include: [
         {
           model: SocialGroup,
-          as: 'socialGroups'
+          as: 'SocialGroups'
         }
       ]
     });
@@ -76,7 +76,7 @@ export class JobVacancySequelizeRepository implements AddJobVacancyRepository, F
         title: jobVacancy.title,
         company: jobVacancy.company,
         wage: jobVacancy.wage,
-        socialGroupsIds: jobVacancy.socialGroups.map( item => (item.id))
+        socialGroupsIds: jobVacancy.SocialGroups.map( item => (item.id))
       };
     }
 
@@ -113,7 +113,7 @@ export class JobVacancySequelizeRepository implements AddJobVacancyRepository, F
         title: item.title,
         company: item.company,
         wage: item.wage,
-        socialGroups: item.socialGroups.map(inner => ({
+        socialGroups: item.SocialGroups.map(inner => ({
           id: inner.id,
           title: inner.title
         }))
