@@ -41,10 +41,8 @@ export class CandidateSequelizeRepository implements
       ]
     }) as Candidate;
 
-    console.log(candidate);
     const user = candidate?.user as User;
     const histories = user?.histories as History[];
-    console.log(user);
     return {
       user: {
           id: user.id,

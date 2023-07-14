@@ -41,6 +41,7 @@ export class JobVacancySequelizeRepository implements AddJobVacancyRepository, F
     
     if(jobVacancies) {
       result = jobVacancies.map(item => ({
+        id: item.id,
         description: item.description,
         recruiterId: item.recruiterId,
         title: item.title,

@@ -35,7 +35,7 @@ CandidateJobVacancy.init({
   }
 }, {
   sequelize,
-  tableName: 'candidate_social_group'
+  tableName: 'candidate_job_vacancy'
 });
 
 type CandidateJobVacancyModelStatic = typeof Model & {

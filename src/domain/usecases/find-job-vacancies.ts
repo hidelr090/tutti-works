@@ -9,6 +9,7 @@ export namespace FindJobVacancies {
   };
 
   export type Result = {
+    id: string;
     description: string;
     recruiterId: string;
     title: string;
