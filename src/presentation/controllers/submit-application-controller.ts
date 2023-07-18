@@ -19,7 +19,6 @@ export class SubmitApplicationController implements Controller {
       return noContent();
 
     }catch(err){
-      console.log(err);
       return serverError(err as Error);
     }
   }

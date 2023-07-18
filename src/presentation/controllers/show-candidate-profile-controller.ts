@@ -17,7 +17,6 @@ export class ShowCandidateProfileController implements Controller {
 
       return ok(profile);
     }catch(err){
-      console.error(err);
       return serverError(err as Error);
     }
   }

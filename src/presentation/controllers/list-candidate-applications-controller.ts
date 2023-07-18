@@ -9,7 +9,7 @@ export class ListCandidateApplicationsController implements Controller {
 
   async handle(request: ListCandidateApplicationsController.Request): Promise<HttpResponse>{
     try{
-      const jobVacancies = await this.listCandidateApplications.listCandidateApplications(request);
+      const jobVacancies = await this.listCandidateApplications.listCandidateApplications(request.candidateId);
 
       return jobVacancies && jobVacancies.length ? ok(jobVacancies) : noContent();
     }catch(err){
@@ -19,5 +19,7 @@ export class ListCandidateApplicationsController implements Controller {
 }
 
 export namespace ListCandidateApplicationsController {
-  export type Request = string;
+  export type Request = {
+    candidateId: string
+  };
 }

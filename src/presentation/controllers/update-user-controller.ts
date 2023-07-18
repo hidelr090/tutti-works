@@ -14,7 +14,7 @@ export class UpdateUserController implements Controller {
       if(error)
         return badRequest(error);
 
-      await this.updateUser.update(request.id, request);
+      await this.updateUser.update(request.userId, request);
 
       return noContent();
 
@@ -37,5 +37,6 @@ export namespace UpdateUserController {
     github?: string;
     instagram?: string;
     accessToken?: string;
+    userId: string;
   }
 }
