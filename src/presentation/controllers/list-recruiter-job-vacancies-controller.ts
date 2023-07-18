@@ -9,7 +9,7 @@ export class ListRecruiterJobVacanciesController implements Controller {
 
   async handle(request: ListRecruiterJobVacanciesController.Request): Promise<HttpResponse>{
     try{
-      const jobVacancies = await this.listRecruiterJobVacancies.listRecruiterJobVacancies(request);
+      const jobVacancies = await this.listRecruiterJobVacancies.listRecruiterJobVacancies(request.recruiterId);
 
       return jobVacancies && jobVacancies.length ? ok(jobVacancies) : noContent();
     }catch(err){
@@ -19,5 +19,7 @@ export class ListRecruiterJobVacanciesController implements Controller {
 }
 
 export namespace ListRecruiterJobVacanciesController {
-  export type Request = string;
+  export type Request = {
+    recruiterId: string
+  };
 }
