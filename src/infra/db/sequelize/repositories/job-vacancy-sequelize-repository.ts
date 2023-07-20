@@ -1,10 +1,10 @@
 import { AddJobVacancyRepository, FindJobVacanciesRepository, ListJobVacanciesByRecruiterIdRepository, LoadJobVacancyByIdRepository, UpdateJobVacancyRepository } from "@/data";
-import { ListRecruiterJobVacancies } from "@/domain/usecases";
-import { JobVacancy, JobVacancySequelizeModel, Recruiter, SocialGroup } from "@/infra/db/sequelize/models";
+import { ListJobVacancyApplicants } from "@/domain/usecases";
+import { Candidate, JobVacancy, JobVacancySequelizeModel, Recruiter, SocialGroup, User } from "@/infra/db/sequelize/models";
 import { Op } from "sequelize";
 
 JobVacancy.associate();
-export class JobVacancySequelizeRepository implements AddJobVacancyRepository, FindJobVacanciesRepository, LoadJobVacancyByIdRepository, UpdateJobVacancyRepository, ListJobVacanciesByRecruiterIdRepository{
+export class JobVacancySequelizeRepository implements AddJobVacancyRepository, FindJobVacanciesRepository, LoadJobVacancyByIdRepository, UpdateJobVacancyRepository, ListJobVacanciesByRecruiterIdRepository, ListJobVacancyApplicants{
   async add(jobVacancyData: AddJobVacancyRepository.Params): Promise<boolean>{
 
     const jobVacancy = await JobVacancySequelizeModel.create(jobVacancyData);
@@ -109,6 +109,7 @@ export class JobVacancySequelizeRepository implements AddJobVacancyRepository, F
 
     if(jobVacancies.length > 0){
       result = jobVacancies.map(item => ({
+        id: item.id,
         description: item.description,
         recruiterId: item.recruiterId,
         title: item.title,
@@ -122,5 +123,48 @@ export class JobVacancySequelizeRepository implements AddJobVacancyRepository, F
     }
 
     return result;
+  }
+
+  async listJobVacancyApplicants (jobVacancyId: string): Promise<ListJobVacancyApplicants.Result>{
+    const jobVacancy = await JobVacancySequelizeModel.findOne({
+      where: {
+        id: jobVacancyId
+      },
+      include: [
+        {
+          model: Candidate,
+          include: [
+            {
+            model: User,
+            as: 'user',
+            },
+          ]
+        }
+      ]
+    });
+    
+
+    if(!jobVacancy) {
+      return null;
+    }
+    const candidates = jobVacancy.Candidates;
+
+    return {
+      id: jobVacancy.id,
+      description: jobVacancy.description,
+      recruiterId: jobVacancy.recruiterId,
+      wage:jobVacancy.wage,
+      company: jobVacancy.company,
+      title: jobVacancy.title,
+      applicants: candidates.map((candidate) => ({
+        id: candidate.user.id,
+        name: candidate.user.name,
+        email: candidate.user.email,
+        phone: candidate.user.phone,
+        candidate: {
+          role: candidate.role
+        }
+      }))
+    };
   }
 }

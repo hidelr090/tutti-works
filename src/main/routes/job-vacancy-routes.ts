@@ -3,7 +3,8 @@ import {
   makeAddJobVacancyController,
   makeUpdateJobVacancyController,
   makeFindJobVacanciesController,
-  makeSubmitApplicationController
+  makeSubmitApplicationController,
+  makeListJobVacancyApplicantsController
 } from '@/main/factories';
 
 import { Router } from 'express';
@@ -15,4 +16,5 @@ export default (router: Router): void => {
   router.put('/job-vacancy', recruiterAuth, adaptRoute(makeUpdateJobVacancyController()));
   router.get('/job-vacancy', adaptRoute(makeFindJobVacanciesController()));
   router.post('/submit-application', auth, adaptRoute(makeSubmitApplicationController()));
+  router.get('/job-vacancy-applicants', adaptRoute(makeListJobVacancyApplicantsController()));
 };

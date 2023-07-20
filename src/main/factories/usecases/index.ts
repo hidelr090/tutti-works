@@ -20,3 +20,4 @@ export * from './update-history-factory';
 export * from './submit-application-factory';
 export * from './search-for-candidates-factory';
 export * from './show-candidate-profile-factory';
+export * from './list-job-vacancy-applicants-factory';

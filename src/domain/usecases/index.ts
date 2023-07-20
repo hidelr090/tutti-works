@@ -19,4 +19,5 @@ export * from './load-user-by-token';
 export * from './load-user-by-id';
 export * from './load-recruiter-by-user-id';
 export * from './list-social-groups';
+export * from './list-job-vacancy-applicants';
 export * from './add-candidate-social-groups';
