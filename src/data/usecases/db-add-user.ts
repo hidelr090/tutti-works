@@ -1,7 +1,7 @@
-import { AddUser } from "@/domain/usecases";
+import { AddUser } from "../../domain/usecases";
 import { AddUserRepository } from "../protocols/db/repositories/user/add";
-import { CheckUserByIdentifierCodeRepository, CheckUserByEmailRepository} from "@/data/protocols";
-import { Hasher } from "@/data/protocols";
+import { CheckUserByIdentifierCodeRepository, CheckUserByEmailRepository} from "../protocols";
+import { Hasher } from "../protocols";
 
 
 export class DbAddUser implements AddUser{

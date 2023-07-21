@@ -1,5 +1,5 @@
-import { AddCandidate } from "@/domain/usecases";
-import { AddCandidateRepository, CheckCandidateByUserIdRepository } from "@/data/protocols/db/repositories";
+import { AddCandidate } from '../../domain/usecases';
+import { AddCandidateRepository, CheckCandidateByUserIdRepository } from "../protocols/db/repositories";
 
 export class DbAddCandidate implements AddCandidate {
   constructor(

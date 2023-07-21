@@ -1,4 +1,4 @@
-import { AddCandidate } from '@/domain/usecases';
+import { AddCandidate } from '../../../../../domain/usecases';
 
 export interface AddCandidateRepository {
   add: (candidateData: AddCandidateRepository.Params) => Promise<AddCandidateRepository.Result>;

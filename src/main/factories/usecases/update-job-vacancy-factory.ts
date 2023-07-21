@@ -1,6 +1,6 @@
-import { DbUpdateJobVacancy } from "@/data";
-import { UpdateJobVacancy } from "@/domain/usecases";
-import { JobVacancySequelizeRepository, JobVacancySocialGroupSequelizeRepository } from "@/infra/db/sequelize/repositories";
+import { DbUpdateJobVacancy } from "../../../data";
+import { UpdateJobVacancy } from "../../../domain/usecases";
+import { JobVacancySequelizeRepository, JobVacancySocialGroupSequelizeRepository } from "../../../infra/db/sequelize/repositories";
 
 export const makeDbUpdateJobVacancy = (): UpdateJobVacancy => {
   const jobVacancyRepository = new JobVacancySequelizeRepository();

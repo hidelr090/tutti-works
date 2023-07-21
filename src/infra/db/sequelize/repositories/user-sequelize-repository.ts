@@ -1,5 +1,5 @@
-import { AddUserRepository, CheckUserByEmailRepository, LoadUserByEmailRepository, LoadUserByIdRepository, LoadUserByTokenRepository, UpdateAccessTokenRepository, CheckUserByIdentifierCodeRepository, UpdateUserRepository} from "@/data";
-import { UserSequelizeModel } from "@/infra/db/sequelize/models";
+import { AddUserRepository, CheckUserByEmailRepository, LoadUserByEmailRepository, LoadUserByIdRepository, LoadUserByTokenRepository, UpdateAccessTokenRepository, CheckUserByIdentifierCodeRepository, UpdateUserRepository} from "../../../../data";
+import { UserSequelizeModel } from "../models";
 
 export class UserSequelizeRepository implements AddUserRepository, LoadUserByEmailRepository, CheckUserByEmailRepository, LoadUserByIdRepository, UpdateAccessTokenRepository, LoadUserByTokenRepository, CheckUserByIdentifierCodeRepository, UpdateUserRepository{
   async add (data: AddUserRepository.Params): Promise<AddUserRepository.Result> {

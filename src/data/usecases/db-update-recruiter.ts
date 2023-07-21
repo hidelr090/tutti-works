@@ -1,5 +1,5 @@
-import { UpdateRecruiter } from "@/domain/usecases";
-import { UpdateRecruiterRepository, FindRecruiterByUserIdRepository } from "@/data/protocols/db/repositories";
+import { UpdateRecruiter } from "../../domain/usecases";
+import { UpdateRecruiterRepository, FindRecruiterByUserIdRepository } from "../protocols/db/repositories";
 
 export class DbUpdateRecruiter implements UpdateRecruiter {
   constructor(

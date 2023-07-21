@@ -1,5 +1,5 @@
-import { AddJobVacancy } from "@/domain/usecases";
-import { AddJobVacancyRepository, AddJobVacancySocialGroupRepository} from "@/data/protocols/db/repositories";
+import { AddJobVacancy } from "../../domain/usecases";
+import { AddJobVacancyRepository, AddJobVacancySocialGroupRepository} from "../protocols/db/repositories";
 import { v4 } from "uuid";
 
 export class DbAddJobVacancy implements AddJobVacancy{

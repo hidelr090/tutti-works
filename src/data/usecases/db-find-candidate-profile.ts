@@ -1,5 +1,5 @@
-import { ShowCandidateProfile } from "@/domain/usecases/show-candidate-profile";
-import { FindCandidateByUserIdRepository } from '@/data/protocols/db/repositories';
+import { ShowCandidateProfile } from "../../domain/usecases/show-candidate-profile";
+import { FindCandidateByUserIdRepository } from '../protocols/db/repositories';
 
 export class DbFindCandidateProfile implements ShowCandidateProfile{
   constructor(

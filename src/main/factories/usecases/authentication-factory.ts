@@ -1,8 +1,8 @@
-import env from '@/main/config/env'
-import { BcryptAdapter, JwtAdapter } from '@/infra/cryptography'
-import { DbAuthentication } from '@/data/usecases'
-import { Authentication } from '@/domain/usecases'
-import { UserSequelizeRepository } from '@/infra/db/sequelize/repositories'
+import env from '../../config/env'
+import { BcryptAdapter, JwtAdapter } from '../../../infra/cryptography'
+import { DbAuthentication } from '../../../data/usecases'
+import { Authentication } from '../../../domain/usecases'
+import { UserSequelizeRepository } from '../../../infra/db/sequelize/repositories'
 
 export const makeDbAuthentication = (): Authentication => {
   const salt = 12;

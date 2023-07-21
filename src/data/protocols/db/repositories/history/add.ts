@@ -1,4 +1,4 @@
-import { AddHistory } from "@/domain/usecases";
+import { AddHistory } from '../../../../../domain/usecases';
 
 export interface AddHistoryRepository {
   add: (historyData: AddHistoryRepository.Params) => Promise<AddHistoryRepository.Result>;

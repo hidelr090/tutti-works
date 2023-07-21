@@ -1,5 +1,5 @@
-import { ListSocialGroups } from "@/domain/usecases/list-social-groups";
-import { ListSocialGroupsRepository } from "@/data/protocols/db/repositories";
+import { ListSocialGroups } from "../../domain/usecases/list-social-groups";
+import { ListSocialGroupsRepository } from "../protocols/db/repositories";
 
 
 export class DbListSocialGroups implements ListSocialGroups {

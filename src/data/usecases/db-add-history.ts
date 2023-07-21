@@ -1,5 +1,5 @@
-import { AddHistory } from "@/domain/usecases";
-import { AddHistoryRepository } from "@/data/protocols/db/repositories";
+import { AddHistory } from "../../domain/usecases";
+import { AddHistoryRepository } from "../protocols/db/repositories";
 
 export class DbAddHistory implements AddHistory{
 

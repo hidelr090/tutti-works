@@ -1,5 +1,5 @@
-import { ListSocialGroupsRepository } from '@/data/protocols/db/repositories';
-import { SocialGroupSequelizeModel } from '@/infra/db/sequelize/models';
+import { ListSocialGroupsRepository } from '../../../../data/protocols/db/repositories';
+import { SocialGroupSequelizeModel } from '../models';
 
 export class SocialGroupSequelizeRepository implements ListSocialGroupsRepository {
   async list () :Promise<ListSocialGroupsRepository.Result>{

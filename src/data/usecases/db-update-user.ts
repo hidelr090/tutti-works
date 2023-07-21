@@ -1,5 +1,5 @@
-import { UpdateUser } from "@/domain/usecases";
-import { UpdateUserRepository, LoadUserByIdRepository } from "@/data/protocols/db/repositories";
+import { UpdateUser } from "../../domain/usecases";
+import { UpdateUserRepository, LoadUserByIdRepository } from "../protocols/db/repositories";
 
 export class DbUpdateUser implements UpdateUser {
   constructor(

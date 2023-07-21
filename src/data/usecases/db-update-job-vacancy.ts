@@ -1,6 +1,6 @@
-import { UpdateJobVacancy } from "@/domain/usecases";
-import { UpdateJobVacancyRepository, DeleteJobVacancySocialGroupRepository, AddJobVacancySocialGroupRepository} from "@/data/protocols/db/repositories";
-import { LoadJobVacancyByIdRepository } from "@/data/protocols/db/repositories";
+import { UpdateJobVacancy } from "../../domain/usecases";
+import { UpdateJobVacancyRepository, DeleteJobVacancySocialGroupRepository, AddJobVacancySocialGroupRepository} from "../protocols/db/repositories";
+import { LoadJobVacancyByIdRepository } from "../protocols/db/repositories";
 export class DbUpdateJobVacancy implements UpdateJobVacancy {
   constructor(
     private readonly updateJobVacancyRepository: UpdateJobVacancyRepository,

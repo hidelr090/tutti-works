@@ -1,6 +1,6 @@
-import { UpdateHistory } from "@/domain/usecases";
-import { UpdateHistoryRepository } from "@/data/protocols/db/repositories";
-import { LoadHistoryByIdRepository } from "@/data/protocols/db/repositories";
+import { UpdateHistory } from "../../domain/usecases";
+import { UpdateHistoryRepository } from "../protocols/db/repositories";
+import { LoadHistoryByIdRepository } from "../protocols/db/repositories";
 
 export class DbUpdateHistory implements UpdateHistory {
   constructor(

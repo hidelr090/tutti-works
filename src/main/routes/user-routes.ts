@@ -1,8 +1,8 @@
-import { adaptRoute } from "@/main/adapters";
+import { adaptRoute } from "../adapters";
 import { 
   makeUpdateUserController,
   makeLoadUserByIdController
-} from '@/main/factories';
+} from '../factories';
 
 import { Router } from 'express';
 import { auth } from "../middlewares/auth";

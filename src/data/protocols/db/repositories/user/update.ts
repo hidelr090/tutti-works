@@ -1,4 +1,4 @@
-import  { UpdateUser } from '@/domain/usecases';
+import  { UpdateUser } from '../../../../../domain/usecases';
 
 export interface UpdateUserRepository {
   update: (userId: string, data: UpdateUserRepository.Params) => Promise<UpdateUserRepository.Result>;

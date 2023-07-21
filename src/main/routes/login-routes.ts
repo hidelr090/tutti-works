@@ -1,5 +1,5 @@
-import { adaptRoute } from "@/main/adapters";
-import { makeAddUserController, makeLoginController } from '@/main/factories';
+import { adaptRoute } from "../adapters";
+import { makeAddUserController, makeLoginController } from '../factories';
 
 import { Router } from 'express';
 

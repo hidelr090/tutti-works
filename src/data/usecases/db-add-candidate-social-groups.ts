@@ -1,5 +1,5 @@
-import { AddCandidateSocialGroups } from "@/domain/usecases";
-import { AddCandidateSocialGroupsRepository, FindSocialGroupsByCandidateIdRepository} from "@/data/protocols/db/repositories";
+import { AddCandidateSocialGroups } from '../../domain/usecases';
+import { AddCandidateSocialGroupsRepository, FindSocialGroupsByCandidateIdRepository} from "../protocols/db/repositories";
 
 export class DbAddCandidateSocialGroups implements AddCandidateSocialGroups {
   constructor(

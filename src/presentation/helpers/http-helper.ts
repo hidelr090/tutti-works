@@ -1,5 +1,5 @@
-import { HttpResponse } from '@/presentation/protocols'
-import { ServerError, UnauthorizedError } from '@/presentation/errors'
+import { HttpResponse } from '../../presentation/protocols'
+import { ServerError, UnauthorizedError } from '../../presentation/errors'
 import { NotFoundError } from '../errors/not-found-error'
 import { Error } from 'sequelize'
 

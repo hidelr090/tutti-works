@@ -1,4 +1,4 @@
-import { AddUser } from "@/domain/usecases";
+import { AddUser } from '../../../../../domain/usecases';
 
 export interface AddUserRepository {
   add: (data: AddUserRepository.Params) => Promise<AddUserRepository.Result>

@@ -1,5 +1,5 @@
-import { LoadRecruiterByUserId } from '@/domain/usecases'
-import { FindRecruiterByUserIdRepository } from '@/data/protocols'
+import { LoadRecruiterByUserId } from '../../domain/usecases'
+import { FindRecruiterByUserIdRepository } from '../protocols'
 
 export class DbLoadRecruiterByUserId implements LoadRecruiterByUserId {
   constructor (

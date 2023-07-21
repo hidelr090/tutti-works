@@ -1,5 +1,5 @@
-import { AddCandidateSocialGroupsRepository, FindSocialGroupsByCandidateIdRepository } from "@/data/protocols/db/repositories";
-import { CandidateSocialGroupSequelizeModel } from "@/infra/db/sequelize/models";
+import { AddCandidateSocialGroupsRepository, FindSocialGroupsByCandidateIdRepository } from "../../../../data/protocols/db/repositories";
+import { CandidateSocialGroupSequelizeModel } from "../models";
 
 export class CandidateSocialGroupSequelizeRepository implements AddCandidateSocialGroupsRepository, FindSocialGroupsByCandidateIdRepository{
   async add (candidateId: string, socialGroupsIds: string[]): Promise<boolean>{

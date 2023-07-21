@@ -1,5 +1,5 @@
-import { FindJobVacancies } from '@/domain/usecases';
-import { FindJobVacanciesRepository } from '@/data/protocols/db/repositories';
+import { FindJobVacancies } from '../../domain/usecases';
+import { FindJobVacanciesRepository } from '../protocols/db/repositories';
 
 export class DbFindJobVacancies implements FindJobVacancies {
   constructor (

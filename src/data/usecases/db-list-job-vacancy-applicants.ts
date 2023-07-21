@@ -1,5 +1,5 @@
-import { ListJobVacancyApplicants } from "@/domain/usecases";
-import { ListJobVacancyApplicantsRepository } from "@/data/protocols/db/repositories";
+import { ListJobVacancyApplicants } from "../../domain/usecases";
+import { ListJobVacancyApplicantsRepository } from "../protocols/db/repositories";
 
 export class DbListJobVacancyApplicants implements ListJobVacancyApplicants {
   constructor (

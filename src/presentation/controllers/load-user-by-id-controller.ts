@@ -1,6 +1,6 @@
-import {Controller, HttpResponse} from '@/presentation/protocols';
-import {noContent, serverError, ok} from '@/presentation/helpers';
-import { LoadUserById } from '@/domain/usecases';
+import {Controller, HttpResponse} from '../../presentation/protocols';
+import {noContent, serverError, ok} from '../../presentation/helpers';
+import { LoadUserById } from '../../domain/usecases';
 
 export class LoadUserByIdController implements Controller {
   constructor(

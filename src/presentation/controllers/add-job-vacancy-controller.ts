@@ -1,6 +1,6 @@
-import { Controller, HttpResponse, Validation} from '@/presentation/protocols';
-import { badRequest, noContent, serverError } from '@/presentation/helpers';
-import { AddJobVacancy } from '@/domain/usecases';
+import { Controller, HttpResponse, Validation} from '../../presentation/protocols';
+import { badRequest, noContent, serverError } from '../../presentation/helpers';
+import { AddJobVacancy } from '../../domain/usecases';
 
 export class AddJobVacancyController implements Controller {
   constructor (

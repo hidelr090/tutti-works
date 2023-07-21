@@ -1,4 +1,4 @@
-import { SearchForCandidates } from "@/domain/usecases";
+import { SearchForCandidates } from '../../../../../domain/usecases';
 
 export interface ListCandidatesByRoleAndSocialGroupsRepository {
   listByRoleAndSocialGroups: (jobInfos: ListCandidatesByRoleAndSocialGroupsRepository.Params) => Promise<ListCandidatesByRoleAndSocialGroupsRepository.Result>;

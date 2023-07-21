@@ -1,5 +1,5 @@
-import { AddCandidateRepository, CheckCandidateByUserIdRepository, FindCandidateByUserIdRepository, ListCandidateJobVacanciesRepository, ListCandidatesByRoleAndSocialGroupsRepository, UpdateCandidateRepository } from '@/data/protocols/db/repositories';
-import { Candidate, CandidateSequelizeModel, User, History, SocialGroup, JobVacancy } from '@/infra/db/sequelize/models';
+import { AddCandidateRepository, CheckCandidateByUserIdRepository, FindCandidateByUserIdRepository, ListCandidateJobVacanciesRepository, ListCandidatesByRoleAndSocialGroupsRepository, UpdateCandidateRepository } from '../../../../data/protocols/db/repositories';
+import { Candidate, CandidateSequelizeModel, User, History, SocialGroup, JobVacancy } from '../models';
 import { Op } from 'sequelize';
 
 Candidate.associate();

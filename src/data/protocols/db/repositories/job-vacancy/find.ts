@@ -1,4 +1,4 @@
-import { FindJobVacancies } from "@/domain/usecases";
+import { FindJobVacancies } from '../../../../../domain/usecases';
 
 export interface FindJobVacanciesRepository {
   find: (data: FindJobVacanciesRepository.Params) => Promise<FindJobVacanciesRepository.Result>;

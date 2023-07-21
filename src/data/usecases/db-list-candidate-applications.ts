@@ -1,4 +1,4 @@
-import { ListCandidateApplications } from "@/domain/usecases";
+import { ListCandidateApplications } from "../../domain/usecases";
 import { ListCandidateJobVacanciesRepository } from "../protocols/db/repositories";
 
 export class DbListCandidateApplications implements ListCandidateApplications {

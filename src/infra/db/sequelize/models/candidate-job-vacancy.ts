@@ -1,4 +1,4 @@
-import { sequelize } from "@/infra/db/config/sequelize";
+import { sequelize } from "../../../../infra/db/config/sequelize";
 import { BaseModel } from "./base";
 import { DataTypes, Model } from 'sequelize';
 

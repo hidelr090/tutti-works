@@ -1,6 +1,5 @@
-import { SubmitApplication } from "@/domain/usecases";
-import { AddCandidateJobVacancyRepository } from "@/data/protocols/db/repositories/candidate-job-vacancy";
-
+import { SubmitApplication } from '../../domain/usecases';
+import { AddCandidateJobVacancyRepository } from "../protocols/db/repositories/candidate-job-vacancy";
 export class DbAddCandidateJobVacancy implements SubmitApplication{
 
   constructor(

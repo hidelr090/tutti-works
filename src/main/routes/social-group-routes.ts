@@ -1,7 +1,7 @@
-import { adaptRoute } from "@/main/adapters";
+import { adaptRoute } from "../adapters";
 import { 
   makeListSocialGroupsController,
-} from '@/main/factories';
+} from '../factories';
 
 import { Router } from 'express';
 

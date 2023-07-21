@@ -1,6 +1,6 @@
-import { AddJobVacancyRepository, FindJobVacanciesRepository, ListJobVacanciesByRecruiterIdRepository, LoadJobVacancyByIdRepository, UpdateJobVacancyRepository } from "@/data";
-import { ListJobVacancyApplicants } from "@/domain/usecases";
-import { Candidate, JobVacancy, JobVacancySequelizeModel, Recruiter, SocialGroup, User } from "@/infra/db/sequelize/models";
+import { AddJobVacancyRepository, FindJobVacanciesRepository, ListJobVacanciesByRecruiterIdRepository, LoadJobVacancyByIdRepository, UpdateJobVacancyRepository } from "../../../../data";
+import { ListJobVacancyApplicants } from "../../../../domain/usecases";
+import { Candidate, JobVacancy, JobVacancySequelizeModel, Recruiter, SocialGroup, User } from "../models";
 import { Op } from "sequelize";
 
 JobVacancy.associate();

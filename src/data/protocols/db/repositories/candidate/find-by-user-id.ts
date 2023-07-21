@@ -1,4 +1,4 @@
-import { ShowCandidateProfile } from "@/domain/usecases";
+import { ShowCandidateProfile } from '../../../../../domain/usecases';
 
 export interface FindCandidateByUserIdRepository {
   findByUserId: (userId: string) => Promise<FindCandidateByUserIdRepository.Result>;

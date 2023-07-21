@@ -1,5 +1,5 @@
-import { Middleware } from '@/presentation/protocols'
-import { CustomRequest } from '@/types'
+import { Middleware } from '../../presentation/protocols'
+import { CustomRequest } from '../../types'
 
 import { Response, NextFunction } from 'express';
 

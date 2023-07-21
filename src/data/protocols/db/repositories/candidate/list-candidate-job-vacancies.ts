@@ -1,4 +1,4 @@
-import { ListCandidateApplications } from "@/domain/usecases";
+import { ListCandidateApplications } from '../../../../../domain/usecases';
 
 export interface ListCandidateJobVacanciesRepository {
   listCandidateJobVacancies: (candidateId: string) => Promise<ListCandidateApplications.Result>

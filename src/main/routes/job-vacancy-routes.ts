@@ -1,15 +1,15 @@
-import { adaptRoute } from "@/main/adapters";
+import { adaptRoute } from "../adapters";
 import { 
   makeAddJobVacancyController,
   makeUpdateJobVacancyController,
   makeFindJobVacanciesController,
   makeSubmitApplicationController,
   makeListJobVacancyApplicantsController
-} from '@/main/factories';
+} from '../factories';
 
 import { Router } from 'express';
-import { recruiterAuth } from "@/main/middlewares/recruiter-auth";
-import { auth } from "@/main/middlewares/auth";
+import { recruiterAuth } from "../middlewares/recruiter-auth";
+import { auth } from "../middlewares/auth";
 
 export default (router: Router): void => {
   router.post('/job-vacancy', recruiterAuth, adaptRoute(makeAddJobVacancyController()));

@@ -1,5 +1,5 @@
-import { LoadUserById } from '@/domain/usecases'
-import { LoadUserByIdRepository } from '@/data/protocols'
+import { LoadUserById } from '../../domain/usecases'
+import { LoadUserByIdRepository } from '../protocols'
 
 export class DbLoadUserById implements LoadUserById {
   constructor (

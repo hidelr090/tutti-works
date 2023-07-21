@@ -1,5 +1,5 @@
-import { Controller } from '@/presentation/protocols'
-import { CustomRequest } from '@/types'
+import { Controller } from '../../presentation/protocols'
+import { CustomRequest } from '../../types'
 
 import { Response } from 'express';
 

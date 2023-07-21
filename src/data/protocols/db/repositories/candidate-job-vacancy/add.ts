@@ -1,4 +1,4 @@
-import  { SubmitApplication } from '@/domain/usecases';
+import  { SubmitApplication } from '../../../../../domain/usecases';
 
 export interface AddCandidateJobVacancyRepository {
   add: (data: AddCandidateJobVacancyRepository.Params ) => Promise<AddCandidateJobVacancyRepository.Result>;

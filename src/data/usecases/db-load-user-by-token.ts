@@ -1,5 +1,5 @@
-import { LoadUserByToken } from '@/domain/usecases'
-import { Decrypter, LoadUserByTokenRepository } from '@/data/protocols'
+import { LoadUserByToken } from '../../domain/usecases'
+import { Decrypter, LoadUserByTokenRepository } from '../protocols'
 
 export class DbLoadUserByToken implements LoadUserByToken {
   constructor (

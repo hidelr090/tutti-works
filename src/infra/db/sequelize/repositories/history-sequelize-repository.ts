@@ -1,6 +1,5 @@
-import { AddHistoryRepository, LoadHistoryByIdRepository, UpdateHistoryRepository } from '@/data/protocols/db/repositories';
-import { AddHistory, UpdateHistory } from '@/domain/usecases';
-import { HistorySequelizeModel } from '@/infra/db/sequelize/models';
+import { AddHistoryRepository, LoadHistoryByIdRepository, UpdateHistoryRepository } from '../../../../data/protocols/db/repositories';
+import { HistorySequelizeModel } from '../models';
 
 export class HistorySequelizeRepository implements AddHistoryRepository, LoadHistoryByIdRepository, UpdateHistoryRepository{
   async add (historyData: AddHistoryRepository.Params): Promise<boolean>{
