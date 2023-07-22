@@ -9,10 +9,14 @@ export class SearchForCandidatesController implements Controller {
 
   async handle(request: SearchForCandidatesController.Request): Promise<HttpResponse>{
     try{
-      const jobVacancies = await this.searchForCandidates.searchForCandidates(request);
+      const jobVacancies = await this.searchForCandidates.searchForCandidates({
+        jobInfos: request.jobInfos,
+        socialGroupsIds: request.socialGroupsIds.split(',')
+      });
 
       return jobVacancies && jobVacancies.length ? ok(jobVacancies) : noContent();
     }catch(err){
+      console.error(err);
       return serverError(err as Error);
     }
   }
@@ -21,6 +25,6 @@ export class SearchForCandidatesController implements Controller {
 export namespace SearchForCandidatesController {
   export type Request = {
     jobInfos: string;
-    socialGroupsIds: string[];
+    socialGroupsIds: string;
   };
 }
